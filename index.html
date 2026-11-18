@@ -1057,6 +1057,167 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   html[data-state="deleted"] .crumb.mode .mode-sub { display: none; }
   .reset-note { font-size: 12px; }
 }
+/* ================= rm (R2): -r, -f and -i ================= */
+html[data-kind="rm"] .ficha.cmd .top .abs { color: var(--bad); font-weight: 700; }
+/* among four cards, the one option keeps its explanation, on two lines if it must */
+.fichas.many .ficha.full .path { display: block; white-space: normal; line-height: 1.15; font-size: 12px; margin-top: 0; }
+.fichas.many .ficha.full { flex: none; padding-top: 3px; padding-bottom: 3px; }
+.fichas.many:has(.full) { gap: 6px; }
+.fichas.many .ficha.full .mean { display: inline; }
+.fichas.many .ficha.full .top .abs { display: none; }
+.ficha.opt .top .abs { font-family: var(--sans); color: var(--opt); }
+.ficha .path .note { white-space: normal; }
+/* -r: everything inside the folder goes too; its rows say "dentro" */
+.row.del.sub { background: repeating-linear-gradient(135deg, color-mix(in srgb, var(--bad-bg) 70%, transparent) 0 8px, transparent 8px 14px); }
+.tag.del.sub { background: var(--card); color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad-line); padding: 4px 9px; }
+.rmsub .rv-folder { border-color: var(--bad-line); background: color-mix(in srgb, var(--bad-bg) 45%, transparent); }
+.rmsub .rv-label { color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad-line); gap: 6px; }
+.rmsub .rv-label code { text-decoration: line-through; text-decoration-thickness: 2px; }
+.rmsub .rv-label .n { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; font: 700 11px/1 var(--sans); color: var(--badge-ink); background: var(--b-bad); }
+.rmsub .rv-label .ico { color: var(--bad); }
+.rmsub .rv-cap b { color: var(--bad); }
+.rmsub.done .rv-folder { border-style: dashed; background: transparent; border-color: color-mix(in srgb, var(--bad-line) 55%, transparent); }
+.rmsub.done .rv-label { color: var(--muted); font-style: italic; }
+.chip.del { font: 650 12px/1 var(--sans); color: var(--bad); padding: 4px 8px; border-radius: 999px; background: var(--bad-bg); box-shadow: inset 0 0 0 1.5px var(--bad-line); }
+/* -f: a missing path is silent. It is drawn quiet (grey, dotted), not as an error */
+.tk.quiet { --tkc: var(--term-muted); color: var(--tkc); text-decoration-style: dotted; text-decoration-thickness: 2px; }
+.count .pips i.quiet { background: transparent; border: 1.5px dotted var(--term-muted); }
+.ficha.quiet { border-style: dashed; border-color: var(--guide); background: transparent; }
+.ficha.quiet .role, .ficha.quiet .val { color: var(--muted); }
+.ficha.quiet .mean.flag, .ficha.quiet .top .abs { color: var(--muted); font-style: italic; }
+.badge.quiet, .n.quiet { background: transparent; color: var(--muted); border: 1.5px dashed var(--muted); }
+.pk.quiet { color: var(--muted); box-shadow: inset 0 0 0 1.2px var(--guide); }
+.row.quiet { border: 2px dotted var(--guide); background: transparent; }
+.row.quiet .name { color: var(--muted); font-style: italic; }
+.row.quiet .ico.xmark { color: var(--muted); }
+.tag.quiet { background: var(--card-2); color: var(--muted); box-shadow: inset 0 0 0 1.5px var(--guide); }
+.tag.quiet .n.quiet { color: var(--muted); }
+.sw.quiet { border: 2px dotted var(--guide); background: transparent; }
+.eq code.tq { color: var(--muted); font-style: italic; }
+/* the amber line: -f also hides your typos */
+.quietnote { display: flex; align-items: center; gap: 8px; margin-top: 8px; font: 600 13.5px var(--sans); color: var(--warn); }
+.quietnote svg { flex: none; color: var(--warn-line); }
+.quietnote code { font-weight: 700; color: var(--warn); }
+/* -i: rm asks on the line, and waits. The question is amber: it needs you */
+.active .prompt.askq { color: var(--t-warn); white-space: pre; margin-right: 0; font-weight: 600; }
+.count.ask { color: var(--t-warn); box-shadow: inset 0 0 0 1.5px var(--t-warn); background: rgba(255, 208, 110, .1); }
+.count .pips i.ask { background: var(--t-warn); border-color: var(--t-warn); }
+.count .pips i.stay { background: var(--term-ink); border-color: var(--term-ink); }
+.tk.stay { --tkc: var(--term-ink); color: var(--tkc); }
+.ficha.ask { border-color: var(--warn-line); background: var(--warn-bg); }
+.ficha.ask .role, .ficha.ask .path code { color: var(--warn); }
+.badge.ask, .n.ask { background: var(--b-warn); color: var(--badge-ink); }
+.ficha.stay { border-color: var(--ink); }
+.ficha.stay .role { color: var(--ink); }
+.badge.stay { background: var(--ink); color: var(--card); font-family: var(--mono); }
+.badge.del { font-family: var(--sans); }
+.ficha .path code.opt { color: var(--opt); font-weight: 700; }
+.row.ask { background: var(--warn-bg); border-color: var(--warn-line); }
+.tag.ask { background: var(--card); color: var(--warn); box-shadow: inset 0 0 0 1.5px var(--warn-line); }
+.row.stay { background: var(--card-2); border-color: var(--ink); }
+.tag.stay { background: var(--ink); color: var(--card); padding: 4px 9px; }
+.sw.ask { background: var(--warn-bg); border-color: var(--warn-line); }
+.sw.stay { background: var(--card-2); border-color: var(--ink); }
+.askvis { margin: auto 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.ask-q { display: flex; flex-direction: column; gap: 4px; padding: 12px 16px; border-radius: 12px; background: var(--term-bg); box-shadow: inset 0 0 0 1px var(--term-edge); }
+.ask-q code { font: 600 14.5px var(--mono); color: var(--t-warn); white-space: pre; }
+.ask-q span { font: 13.5px var(--sans); color: var(--term-muted); }
+.ask-q span b { color: var(--term-ink); }
+.ask-a { display: flex; gap: 12px; }
+.ans { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 10px; font: 14px var(--sans); border: 1.5px solid var(--line); background: var(--card); white-space: nowrap; }
+.ans kbd { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 7px; font: 700 15px var(--mono); background: var(--card-2); box-shadow: inset 0 -2px 0 var(--line), inset 0 0 0 1.5px var(--line); }
+.ans.yes { border-color: var(--bad-line); background: var(--bad-bg); color: var(--bad); }
+.ans.yes kbd { color: var(--bad); background: var(--card); }
+.ans.no b { color: var(--ink); }
+.ans.on { box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 30%, transparent); }
+.ans.yes.on { background: var(--b-bad); color: var(--card); }
+.ans.no.on { background: var(--ink); color: var(--card); border-color: var(--ink); }
+.ans.no.on b { color: var(--card); }
+.askvis .rv-cap { font: 13.5px var(--sans); color: var(--muted); }
+.askvis .rv-cap b { color: var(--ink); }
+.go.ask { background: var(--warn-bg); color: var(--ink); box-shadow: inset 0 0 0 2px var(--warn-line); }
+.go.ask kbd { font: 700 14px/1.2 var(--sans); padding: 3px 10px; border-radius: 7px; background: var(--card); color: var(--ink); box-shadow: inset 0 -2px 0 var(--line); margin: 0 2px; }
+/* ================= rm (R3): safety =================
+ * -rf: a distinct danger banner (hazard stripes, where you are, what goes, the count) in the count's place.
+ * The climb out of where you are is red on the tree; what rm refuses, and what stays, gets a calm ink shield. */
+.banner.danger { display: block; padding: 0; border-radius: 12px; overflow: hidden; border: 2px solid var(--b-bad); background: var(--card);
+  color: var(--ink); font: 15px var(--sans); box-shadow: 0 0 0 3px color-mix(in srgb, var(--bad-line) 22%, transparent); }
+.banner.danger::before { content: ""; display: block; height: 7px; background: repeating-linear-gradient(135deg, var(--b-bad) 0 9px, #2a231e 9px 18px); }
+.dg-head { display: flex; align-items: center; gap: 10px; padding: 6px 14px; background: var(--b-bad); color: var(--card); font: 650 14px/1.3 var(--sans); }
+.dg-head svg { flex: none; }
+.dg-head code { font: 700 14px var(--mono); color: inherit; }
+.dg-head b { font-weight: 800; letter-spacing: 0; }
+.dg-top { padding: 8px 14px 2px; background: var(--b-bad); color: var(--card); font: 800 22px/1.15 var(--sans); }
+.dg-top b { font-weight: 900; letter-spacing: .04em; }
+.banner.danger.home { border-width: 3px; }
+.banner.danger.home .dg-head { padding-top: 3px; }
+.dg-where { display: grid; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 10px; row-gap: 2px; padding: 8px 14px 4px; }
+.dg-k { display: inline-flex; align-items: center; gap: 4px; font: 650 11.5px var(--sans); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.dg-k svg { width: 11px; height: 11px; }
+.dg-k.to { color: var(--bad); }
+.dg-t { min-width: 0; }
+.dg-where code { font: 700 14.5px var(--mono); color: var(--ink); }
+.dg-t:not(.here) code { color: var(--bad); }
+.dg-t i { margin-left: 6px; font: italic 650 12.5px var(--sans); color: var(--bad); white-space: nowrap; }
+.dg-count { display: flex; align-items: center; gap: 8px; padding: 2px 14px 8px; font: 650 14px/1.35 var(--sans); color: var(--bad); }
+.dg-count svg { flex: none; }
+.dg-count b { font-weight: 800; }
+.dg-count code { font: 700 14px var(--mono); color: inherit; }
+.banner.danger.calm .dg-k.to, .banner.danger.calm .dg-t code, .banner.danger.calm .dg-t i { color: var(--muted); }
+.banner.danger.calm .dg-count { color: var(--ink); }
+@media (max-width: 1360px), (max-height: 860px) {
+  .dg-top { font-size: 19px; padding-top: 6px; }
+  .dg-head { font-size: 13px; }
+  .dg-where code { font-size: 13.5px; }
+  .dg-count { font-size: 13.5px; }
+}
+/* the banner says where it goes: the route block steps aside */
+.side .block.route.stepaside { display: none; }
+.side .block.route.stepaside + .block.what { border-top: 0; padding-top: 0; }
+/* -rf on one card: the dangerous pair */
+.ficha.opt.rf { border-color: var(--bad-line); }
+.ficha.opt.rf .mean { color: var(--bad); font-weight: 650; }
+.ficha.del .mean.flag { color: var(--bad); }
+/* the climb, in red: the route leaves where you are; the last ".." says so */
+.hops.del { color: var(--bad-line); }
+.hop.del { color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad-line); }
+.hop.del b { background: var(--bad-bg); color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad-line); }
+.hop.climb { flex-wrap: wrap; max-width: 160px; row-gap: 3px; padding: 5px 10px 5px 5px; }
+.hop.climb em { flex-basis: 100%; font: italic 650 12px/1.1 var(--sans); padding-left: 2px; }
+.sw.route.del { border-top-color: var(--bad-line); }
+.legend code.del { color: var(--bad); }
+.here-box { position: absolute; z-index: 0; pointer-events: none; border: 1.5px dashed color-mix(in srgb, var(--ink) 45%, transparent); border-radius: 12px; }
+.here-box span { position: absolute; right: 10px; bottom: -9px; padding: 0 6px; background: var(--card); font: 650 12px/1.2 var(--sans); color: var(--muted); }
+/* what rm refuses, and what stays (root's folder): a calm ink shield, not red */
+.row.refuse { border: 2px solid var(--ink); background: var(--card-2); }
+.row.keep { border: 2px solid var(--ink); background: var(--card); }
+.tag.safe { background: var(--ink); color: var(--card); padding: 4px 10px 4px 7px; }
+.tag.safe svg { width: 12px; height: 12px; }
+.tag.safe .n { color: #fff; }
+.n.bad { background: var(--b-bad); }
+.sw.safe { background: var(--card); border-color: var(--ink); }
+.tree-wrap.wipe .row.del { border-color: transparent; border-radius: 0; }
+.gone-box { position: absolute; z-index: 0; pointer-events: none; border: 2px solid var(--bad-line); border-radius: 12px; }
+.gone-box span { position: absolute; right: 12px; bottom: -10px; padding: 0 6px; background: var(--card); font: 700 12.5px/1.3 var(--sans); color: var(--bad); }
+/* the folder you are in, deleted: a dashed ghost with the pin, "ya no existe" */
+.row.lost { border: 2px dashed var(--ink); background: transparent; }
+.row.lost .name { color: var(--muted); font-style: italic; text-decoration: line-through; }
+.row.lost .ico { opacity: .45; }
+.tag.lost { background: var(--card); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); padding: 4px 9px; }
+.where .gone-note { display: none; }
+.where.lost { border-style: dashed; border-color: var(--ink); }
+.where.lost #where-cwd { text-decoration: line-through; color: var(--muted); }
+.where.lost .gone-note { display: inline; margin-left: 6px; font: 700 12.5px var(--sans); color: var(--ink); }
+.explain .lostline { display: block; margin-top: 6px; font-weight: 650; }
+/* the amber line: what rm protects, and what it doesn't */
+.warnnote { display: flex; gap: 10px; align-items: flex-start; color: var(--ink); padding: 8px 12px; border-radius: 10px; background: var(--warn-bg); border: 1.5px solid var(--warn-line); margin-top: 8px; }
+.warnnote svg { flex: none; color: var(--warn); margin-top: 2px; }
+.warnnote code { font-weight: 700; color: var(--a2); }
+/* rm -i: y is yes = sí; s keeps the file */
+.ysnote { display: inline-flex; align-items: center; gap: 8px; font: 600 13.5px var(--sans); color: var(--warn); padding: 6px 10px; border-radius: 9px; background: var(--warn-bg); box-shadow: inset 0 0 0 1.5px var(--warn-line); }
+.ysnote svg, .ribbon .ysnote svg { flex: none; position: static; inset: auto; width: 16px; height: 16px; overflow: visible; color: var(--warn); }
+.ysnote b { color: var(--ink); }
+.ysnote kbd { font: 700 13px var(--mono); padding: 0 6px; border-radius: 5px; background: var(--card); box-shadow: inset 0 0 0 1.2px var(--line); color: var(--ink); }
 </style>
 </head>
 <body>
@@ -1067,6 +1228,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   <symbol id="i-reset" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M7 7l10 10M17 7L7 17"/></symbol>
   <symbol id="i-warn" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" d="M12 3l10 18H2zM12 10v5M12 18v.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l8 3v6.2c0 5-3.4 9.3-8 10.8-4.6-1.5-8-5.8-8-10.8V5z"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M7.5 11V8.2a4.5 4.5 0 0 1 9 0V11"/><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.4" fill="currentColor"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></symbol>
@@ -1077,7 +1239,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   <div class="brand"><span class="logo">&gt;_</span>Entrenador de terminal</div>
   <!-- Zona libre is the page's only mode: every command runs freely on one tree (guided challenges come later) -->
   <div class="crumb mode" data-testid="mode"><span>Zona libre</span><span class="mode-sub">Prueba lo que quieras. Aquí nada se rompe.</span></div>
-  <div class="where" id="where" data-testid="where"><svg width="14" height="14"><use href="#i-pin"/></svg>Estás en <code id="where-cwd">~/descargas</code><span class="tilde">(<code>~</code> = <code>/home/ana</code>)</span></div>
+  <div class="where" id="where" data-testid="where"><svg width="14" height="14"><use href="#i-pin"/></svg>Estás en <code id="where-cwd">~/descargas</code><span class="tilde">(<code>~</code> = <code>/home/ana</code>)</span><span class="gone-note" data-testid="where-lost">ya no existe</span></div>
   <button class="icon-btn" type="button" id="theme-toggle" data-testid="theme-toggle" aria-label="Cambiar tema claro u oscuro" title="Tema claro u oscuro"><svg width="16" height="16" class="moon"><use href="#i-moon"/></svg><svg width="16" height="16" class="sun"><use href="#i-sun"/></svg></button>
   <div class="reset-note" id="reset-note" data-testid="reset-note" hidden><span><b>Aquí sí:</b> Reiniciar trae de vuelta la práctica</span><span>(solo la práctica se puede deshacer)</span><svg class="rn-arrow" viewBox="0 0 22 12" aria-hidden="true"><path d="M2 6H18"/><path d="M13 1.5l5 4.5-5 4.5"/></svg></div>
   <button class="reset" type="button" id="reset" data-testid="reset"><svg width="16" height="16"><use href="#i-reset"/></svg>Reiniciar</button>
@@ -1258,8 +1420,11 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   }
   function joinTarget(destText, base) { return /\/$/.test(destText) ? destText + base : destText + '/' + base; }
 
-  /* Resolve a typed path from the current folder, one step at a time. */
-  function resolve(text, cwd, tree) {
+  /* Resolve a typed path from the current folder, one step at a time.
+   * The folder you are in may have been deleted (rm -rf ../descargas from descargas): then a relative path fails at
+   * its first step, as in bash (the kernel finds nothing there). logical: cd's way, which works on the path's text
+   * (bash's $PWD), so cd .. still climbs out of a folder that no longer exists. */
+  function resolve(text, cwd, tree, logical) {
     var steps = [], segs, rest;
     if (text.charAt(0) === '/') { segs = []; rest = text.slice(1); steps.push({ kind: 'root', seg: '/', reach: '/', ok: true }); }
     else if (text === '~' || text.indexOf('~/') === 0) { segs = HOME.slice(); rest = text.slice(1); steps.push({ kind: 'home', seg: '~', reach: abs(HOME), ok: true }); }
@@ -1267,9 +1432,15 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     var parts = rest.split('/').filter(Boolean);
     var trailing = /\/$/.test(text) && text !== '/';
     var status = 'ok', failAt = -1, failName = null, failParent = null, fileInWay = null;
-    var node = getNode(tree, segs);
+    var node = getNode(tree, segs), lost = !node;
+    if (lost && !parts.length) { status = 'missing'; failAt = 0; failName = '.'; failParent = segs; }
     parts.forEach(function (p, i) {
       var before = segs;
+      if (status === 'ok' && !node) {
+        // where you are no longer exists: only cd's ".." climbs out, on the path's text; anything else finds nothing
+        if (logical && p === '..') { segs = segs.slice(0, -1); node = getNode(tree, segs); steps.push({ kind: 'up', seg: p, reach: abs(segs), ok: !!node, isDir: !!node, last: i === parts.length - 1 }); return; }
+        status = 'missing'; failAt = i; failName = p; failParent = before;
+      }
       if (status === 'ok' && node.type !== 'dir') { status = 'notdir'; failAt = i; fileInWay = before; }
       var kind;
       if (p === '.') kind = 'stay';
@@ -1283,8 +1454,15 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       steps.push({ kind: kind, seg: p, reach: abs(segs), ok: okHere, missing: status === 'missing' && failAt === i,
         isDir: okHere && node.type === 'dir', last: i === parts.length - 1 });
     });
+    if (status === 'ok' && !node) { status = 'missing'; failAt = parts.length - 1; failName = parts[parts.length - 1] || '.'; failParent = segs; }
+    // "." in a folder that was deleted still opens (Linux keeps it while you are in it): an empty folder where nothing
+    // can be made. ls . lists nothing; cp and mv into it fail with "No such file or directory" (cd works on the text)
+    if (lost && !logical && startOf(text) === 'here' && parts.length && parts.every(function (p) { return p === '.'; })) {
+      status = 'ok'; node = { type: 'dir', children: {}, lost: true }; failAt = -1; failName = null; failParent = null;
+    }
     if (status === 'ok' && trailing && node.type !== 'dir') { status = 'notdir'; failAt = parts.length; fileInWay = segs; }
     return {
+      lost: lost && startOf(text) === 'here',
       text: text, steps: steps, segs: segs, parts: parts, trailing: trailing,
       abs: abs(segs), shown: abs(segs) + (trailing && segs.length ? '/' : ''),
       node: status === 'ok' ? node : null, status: status, failAt: failAt,
@@ -1422,6 +1600,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     if (tnode && tnode.type !== 'dir' && srcIsDir)
       return fail('overwrite-nondir', "mv: cannot overwrite non-directory '" + targetText + "' with directory '" + s + "'");
     var tparent = targetSegs.slice(0, -1), tname = targetSegs[targetSegs.length - 1];
+    if (!getNode(tree, tparent)) return fail('lost-dest', "mv: cannot move '" + s + "' to '" + targetText + "': No such file or directory");
     if (!src.segs.length || !writable(tree, src.segs.slice(0, -1)) || !writable(tree, tparent)) {
       // the root-owned folder that refuses: where it would land, or else where it comes from
       var locked = !src.segs.length ? [] : !writable(tree, tparent) ? tparent : src.segs.slice(0, -1);
@@ -1566,6 +1745,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         return code(abs(r.locked)) + ' es del sistema (root), no tuya: solo puedes cambiar cosas dentro de ' + code('/home/ana') + '.';
       case 'busy':
         return code('.') + ' y ' + code('..') + ' son atajos, no nombres: mv no puede moverlos.';
+      case 'lost-dest':
+        return 'La carpeta donde estás ya no existe: mv no tiene dónde dejar ' + b1(srcName) + '. Sal con ' + code('cd ~') + '.';
       case 'not-empty':
         return 'En ' + esc(placeName(r.targetSegs.slice(0, -1))) + ' ya hay una carpeta ' + q(nameOf(r.targetSegs)) +
           ' con cosas dentro, y mv no la reemplaza.';
@@ -1589,7 +1770,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     'overwrite-nondir': 'Ya hay un archivo con ese nombre y mv no lo cambia por una carpeta.',
     'permission': 'Permiso denegado: / y /home son del sistema (root), no tuyas; solo puedes cambiar cosas dentro de /home/ana.',
     'busy': 'mv no puede mover «.» ni «..»: usa el nombre de la carpeta.',
-    'not-empty': 'Ya hay una carpeta con ese nombre y tiene cosas dentro.'
+    'not-empty': 'Ya hay una carpeta con ese nombre y tiene cosas dentro.',
+    'lost-dest': 'mv no tiene dónde dejarlo: la carpeta donde estás ya no existe.'
   };
   /* A line-by-line Spanish translation of a bash error, where there is one; otherwise the gloss. */
   function translate(r) {
@@ -1678,17 +1860,29 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   }
   var COMMAND_LIST = 'pwd, cd, ls, mkdir, mv, cp y rm', COMMAND_LIST_OR = 'pwd, cd, ls, mkdir, mv, cp o rm';
 
+  /* You are in a folder that no longer exists (you deleted it, or one above it): bash keeps the path in the prompt,
+   * but nothing is there. Relative paths find nothing; cd ~ (or cd .., or cd to any folder that exists) gets you out. */
+  function LOST_TEXT(cwd) {
+    return '<b>Estás en una carpeta que ya no existe:</b> ' + code(tildePath(cwd)) + '. El prompt la sigue mostrando, pero ahí no hay nada: ' +
+      'las rutas relativas dan ' + code('No such file or directory') + '. Sal con ' + code('cd ~') + '.';
+  }
+  function cwdLost(state) { return !getNode(state.tree, state.cwd); }
+
   /* ---------- live analysis ---------- */
-  function analyze(line, state) {
-    var toks = tokenize(line);
-    var a = {
+  function newAnalysis(line) {
+    return {
       line: line, kind: 'empty', cmd: null, tokens: [], trailingSpace: /\s$/.test(line), count: null, cards: [],
       explain: null, go: null, marks: {}, added: [], eqs: [], route: null, srcRoute: null, argv: [], hasPreview: false, showRoot: false,
       ghosts: [], fix: null, state: '', preview: null, banner: null, broken: null, fixRoute: null, hint: null, reveal: [], blocked: false
     };
+  }
+  function analyze(line, state) {
+    var toks = tokenize(line);
+    var a = newAnalysis(line);
     if (!toks.length) {
       a.explain = { tone: 'info', html: 'Escribe un comando. Por ejemplo, ' + code('mv') + ', qué vas a mover y a dónde: ' +
         code('mv notas.txt ../documentos/') + '.' };
+      if (!getNode(state.tree, state.cwd)) a.explain = { tone: 'warn', html: LOST_TEXT(state.cwd) };
       a.go = { kind: 'hint', html: 'Escribe en la terminal' };
       // only the command card: the argument cards come once a command is recognized, from its roles
       a.cards = [{ role: 'empty', n: 0, label: 'comando', val: 'falta: el comando', path: 'escribe un comando: ' + COMMAND_LIST_OR,
@@ -2168,6 +2362,9 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     if (Object.keys(tree.children).length > 1 || (homeDir && Object.keys(homeDir.children).length > 1)) outside = true;
     if (!underHome(state.cwd)) outside = true;
     var rootSegs = outside ? [] : HOME.slice();
+    // where you are, when it no longer exists: shown under the nearest folder that does
+    var lostAt = null;
+    if (!getNode(tree, state.cwd)) { lostAt = state.cwd.slice(0, -1); while (lostAt.length && !getNode(tree, lostAt)) lostAt = lostAt.slice(0, -1); }
     function byParent(list) {
       var m = {};
       list.forEach(function (x) { var k = abs(x.segs.slice(0, -1)); (m[k] = m[k] || []).push(x); });
@@ -2178,7 +2375,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
 
     function ghostRow(g, depth) {
       out.push({ path: abs(g.segs), name: nameOf(g.segs) + (g.isDir ? '/' : ''), isDir: g.isDir, depth: depth, missing: true,
-        marks: [{ type: 'missing', n: g.n, label: g.label }], ghost: false, fresh: false });
+        marks: [{ type: 'missing', n: g.n, label: g.label, quiet: !!g.quiet }], ghost: false, fresh: false });
     }
     function walk(node, segs, depth, ghost, fresh, extraMarks) {
       var p = abs(segs);
@@ -2205,11 +2402,14 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         (addedBy[p] || []).forEach(function (x) { (x.isDest || x.sorted ? items : tail).push({ name: nameOf(x.segs), kind: 'added', x: x }); });
         (ghostsBy[p] || []).forEach(function (g) { (g.atEnd ? tail : items).push({ name: nameOf(g.segs), kind: 'ghost', g: g }); });
         gone.forEach(function (gn) { if (abs(gn.parent) === p) tail.push({ kind: 'gone', gn: gn }); });
+        if (lostAt && sameSegs(lostAt, segs)) tail.push({ kind: 'lost' });
       }
       items.sort(function (u, v) { return byLocale(u.name, v.name); });
       items.concat(tail).forEach(function (it) {
         if (it.kind === 'real') walk(node.children[it.name], segs.concat([it.name]), depth + 1, ghost || (leaving && !fresh), fresh, null);
         else if (it.kind === 'ghost') ghostRow(it.g, depth + 1);
+        else if (it.kind === 'lost') out.push({ path: abs(state.cwd), name: state.cwd.slice(lostAt.length).join('/') + '/', isDir: true, depth: depth + 1,
+          lost: true, marks: [{ type: 'lost' }], ghost: false, fresh: false });
         else if (it.kind === 'gone') out.push({ path: p + (p === '/' ? '' : '/') + '(borrados)', name: it.gn.names.join(', '), isDir: false, depth: depth + 1,
           gone: true, marks: [{ type: 'gone', count: it.gn.names.length }], ghost: false, fresh: false });
         else {
@@ -2234,7 +2434,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   }
 
   /* ---------- Enter ---------- */
-  function apply(line, state) {
+  /* answers: rm -i's answers so far. When a command still waits for one, apply returns { asking } and the partial state. */
+  function apply(line, state, answers) {
     var a = analyze(line, state);
     if (a.kind === 'empty') return { ran: false, blocked: false, state: state, analysis: a };
     var next = cloneState(state), run, notes, result;
@@ -2245,7 +2446,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       result = { tone: 'bad', html: 'bash no conoce ' + q(a.cmd) + ': no se ejecutó nada y el árbol no cambió.' };
     } else if (COMMANDS[a.kind] && built(COMMANDS[a.kind]) && !a.blocked) {
       var spec = COMMANDS[a.kind];
-      run = spec.run(a.argv, next);
+      run = spec.run(a.argv, next, answers);
+      if (run.asking) return { ran: false, blocked: false, asking: run.asking, partial: next, lines: run.lines.slice(), errLines: run.errLines.slice(), analysis: a };
       notes = spec.notes(run);
       result = spec.result(run, next, a);
     } else {
@@ -2255,7 +2457,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     // output is an error unless the command says it printed what it was asked for (pwd's path, cd -'s folder)
     // ls can print errors first and still list the rest: errCount says how many of the first lines are errors
     var entry = { prompt: promptFor(state.cwd), command: line.trim(), output: run.lines.slice(), error: run.lines.length > 0 && !run.ok,
-      errCount: run.errCount || 0, notes: notes };
+      errCount: run.errCount || 0, errLines: run.errLines, notes: notes };
     next.history.push(entry);
     if (next.history.length > HISTORY_MAX) next.history = next.history.slice(-HISTORY_MAX);
     return { ran: true, state: next, entry: entry, run: run, result: result };
@@ -2444,7 +2646,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       if (!state.oldpwd) return fail('oldpwd', 'bash: cd: OLDPWD not set');
       text = abs(state.oldpwd);
     }
-    var res = resolve(text, state.cwd, state.tree);
+    var res = resolve(text, state.cwd, state.tree, true);   // cd works on the path's text: cd .. leaves a folder that is gone
     if (res.status === 'missing') return fail('missing', 'bash: cd: ' + text + ': No such file or directory', text);
     if (res.status === 'notdir' || res.node.type !== 'dir') return fail('notdir', 'bash: cd: ' + text + ': Not a directory', text);
     var from = state.cwd.slice();
@@ -2514,7 +2716,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     }
     // the path to resolve: what you typed, ~ when there's nothing, and for "-" the way back from here
     var pathText = !t ? '~' : back ? relFrom(cwd, state.oldpwd) : typed;
-    var res = resolve(pathText, cwd, tree);
+    var res = resolve(pathText, cwd, tree, true);
     if (back) res.text = '-';
     var dTone = run.fatal ? 'bad' : 'a2';
     if (t) a.tokens.push(tok(t, 'dest', 1, '1 · destino', dTone));
@@ -2650,6 +2852,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     if (o.bad) return { lines: ["ls: invalid option -- '" + o.bad + "'", LS_TRY], ops: [], fatal: 'ls-option', bad: o.bad };
     var tree = state.tree, paths = o.paths.length ? o.paths : ['.'];
     var errors = [], files = [], dirs = [];
+    // GNU ls in a deleted folder: "." opens, and there is nothing in it
+    if (!o.paths.length && cwdLost(state)) return { lines: [], ops: [], ok: true, errCount: 0, errors: [], listed: [], files: [], opts: { a: o.a, l: o.l }, sample: null, total: null, named: 0, lost: true };
     paths.forEach(function (t) {
       var res = resolve(t, state.cwd, tree);
       if (res.status !== 'ok') {
@@ -2706,6 +2910,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   function lsName(opts) { return 'ls' + (opts.l || opts.a ? ' -' + (opts.l ? 'l' : '') + (opts.a ? 'a' : '') : ''); }
   function lsResult(run, next) {
     if (run.fatal) return { tone: 'bad', html: 'ls mostró un error: no conoce la opción ' + code('-' + run.bad) + '. No listó nada.' };
+    if (run.lost) return { tone: 'warn', html: 'ls no mostró nada: la carpeta donde estás ya no existe. Sal con ' + code('cd ~') + '.' };
     var parts = [], cwd = next.cwd, one = run.listed.length === 1 ? run.listed[0] : null;
     if (one) parts.push('Listo: ' + ink(lsName(run.opts)) + ' escribió lo que hay en ' + lsPlace(one.segs, cwd) +
       (run.opts.l ? ', una línea por cosa' : '') + ': ' + thingsText(one.entries) + '.');
@@ -2809,6 +3014,15 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     a.state = 'ls';
     var run = runLs(a.argv, cloneState(state));
     a.run = run;
+    if (!m && cwdLost(state)) {
+      // where you are no longer exists: ls has nothing to list
+      cmdCard.lines = ['sin ruta = la carpeta donde estás: ' + code(tildePath(cwd))];
+      a.state = 'ls-lost';
+      a.explain = { tone: 'warn', html: LOST_TEXT(cwd) + ' ' + code('ls') + ' no muestra nada.' };
+      a.go = { kind: 'enter', html: 'no muestra nada' };
+      a.routeNote = 'La carpeta donde estás ya no existe.';
+      return;
+    }
     // without a path, ls lists where you are
     if (!m) {
       cmdCard.lines = ['sin ruta = la carpeta donde estás: ' + code(tildePath(cwd))];
@@ -2944,6 +3158,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       }
       r.segs = res.segs;
       if (!res.lastMissing) return fail('missing', 'No such file or directory', text, { missingName: res.failName, missingIn: res.failParent });
+      // in a folder that no longer exists there is nowhere to make it (rm -rf took the folder you are in)
+      if (!getNode(tree, res.failParent)) return fail('missing', 'No such file or directory', text, { missingName: res.failName, missingIn: res.failParent });
       if (!writable(tree, res.failParent)) return fail('permission', 'Permission denied', text, { locked: res.failParent });
       plan.push(res.failParent.concat([res.failName]));
     } else {
@@ -2960,6 +3176,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
           r.segs = next;
           return last ? fail('exists', 'File exists', text, { isDir: false }) : fail('notdir', 'Not a directory', prefixThrough(text, i), { file: next });
         }
+        if (!planned[abs(segs)] && !getNode(tree, segs)) { r.segs = next; return fail('missing', 'No such file or directory', prefixThrough(text, i), { missingName: p, missingIn: segs }); }
         if (!planned[abs(segs)] && !writable(tree, segs)) { r.segs = next; return fail('permission', 'Permission denied', prefixThrough(text, i), { locked: segs }); }
         planned[abs(next)] = true;
         plan.push(next);
@@ -3342,6 +3559,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     if (tnode && tnode.type !== 'dir' && srcIsDir)
       return fail('overwrite-nondir', "cp: cannot overwrite non-directory '" + targetText + "' with directory '" + s + "'");
     var tparent = targetSegs.slice(0, -1), tname = targetSegs[targetSegs.length - 1];
+    if (!getNode(tree, tparent)) return fail('lost-dest', "cp: cannot create " + what + " '" + targetText + "': No such file or directory");
     // root's folders: a new thing directly inside / or /home, or a merge into one of them
     var locked = tnode && tnode.type === 'dir' ? (writable(tree, targetSegs) ? null : targetSegs) : (writable(tree, tparent) ? null : tparent);
     if (locked) return fail('permission', "cp: cannot create " + what + " '" + targetText + "': Permission denied", { locked: locked });
@@ -3397,7 +3615,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     'into-itself': 'No se puede copiar una carpeta dentro de sí misma.',
     'overwrite-dir': 'Ya hay una carpeta con ese nombre y cp no la cambia por un archivo.',
     'overwrite-nondir': 'Ya hay un archivo con ese nombre y cp no lo cambia por una carpeta.',
-    'permission': 'Permiso denegado: / y /home son del sistema (root), no tuyas; solo puedes copiar cosas dentro de /home/ana.'
+    'permission': 'Permiso denegado: / y /home son del sistema (root), no tuyas; solo puedes copiar cosas dentro de /home/ana.',
+    'lost-dest': 'cp no tiene dónde dejar la copia: la carpeta donde estás ya no existe.'
   };
   function cpNote(r) {
     if (r.code === 'cannot-stat') return 'cp: no encuentro «' + r.text + '»: no existe ese archivo o carpeta';
@@ -3443,6 +3662,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         return q(nameOf(r.targetSegs)) + ' es un archivo, y cp no cambia un archivo por una carpeta.';
       case 'permission':
         return code(abs(r.locked)) + ' es del sistema (root), no tuya: no puedes dejar una copia ahí. Solo puedes cambiar cosas dentro de ' + code('/home/ana') + '.';
+      case 'lost-dest':
+        return 'La carpeta donde estás ya no existe: cp no tiene dónde dejar la copia. Sal con ' + code('cd ~') + '.';
     }
     return '';
   }
@@ -3799,32 +4020,43 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       html: replacing ? 'para copiar y reemplazar' : one && ops[0].isDir ? 'para copiar la carpeta' : 'para copiar' });
   }
 
-  /* ---------- rm: deletes, for ever (task rm, step R1) ----------
+  /* ---------- rm: deletes, for ever (task rm, steps R1, R2 and R3) ----------
    * There is no trash and no undo in a terminal: the preview says so before Enter, and the result after it.
-   * The analysis is built so R2 (-r, -f, -i) and R3 (the safety banners) plug in:
-   *   rmParse   reads every option rm has into flags (o.r, o.f, o.i, o.d), whether or not this step practises it;
-   *   RM_NEXT   the options that come in a later step: each gets a friendly "llega en el siguiente paso" note and
-   *             nothing runs. R2 takes its options out of RM_NEXT once rmOne handles them;
-   *   rmOne     one operand, with bash semantics: { code, line, doomed: [{ segs, isDir }], ... }. doomed is everything
-   *             Enter removes for that operand (a -r folder: its whole subtree, children first, then the folder);
+   * R2 adds -r (a folder and everything in it), -f (silence: no error for a missing path, no question) and -i
+   * (a question before each item, answered on the line). The pieces:
+   *   rmParse   reads every option rm has into flags (o.r, o.f, o.i); of -f and -i the last one wins, as in GNU rm;
+   * R3 adds safety, with no new option:
+   *   rmSafety  the operands rm guards (with -r): '.' and '..' (refused), '/' (preserve-root) and 'home' (/home/ana or
+   *             /home: everything of ana's goes, then root's folder refuses);
+   *   rmOne     one operand, with bash semantics: { code, line(s), doomed: [{ segs, isDir, n }], kept, quiet, denied }.
+   *             doomed is everything Enter removes for it (a -r folder: its whole subtree, children first); denied is
+   *             what stayed because its folder is root's (rm -rf ~: /home/ana itself, "Permission denied");
+   *   runRm     every operand in turn; with -i it asks through ask(), which takes the answers given so far and
+   *             throws RmAsk at the first question still unanswered (the UI replays the command with each answer);
    *   rmCount   counts doomed paths by kind, for "Se borrarán 3 archivos y 1 carpeta, para siempre". */
   var RM_TRY = "Try 'rm --help' for more information.";
   /* GNU rm's options. Any other letter is getopt's "invalid option" (glibc's wording, as on Ubuntu). */
   var RM_LETTERS = 'fiIrRdv';
   var RM_LONG = ['--force', '--interactive', '--one-file-system', '--no-preserve-root', '--preserve-root', '--recursive',
     '--dir', '--verbose', '--help', '--version'];
-  var RM_FLAG = { f: 'f', i: 'i', r: 'r', R: 'r', d: 'd', '--force': 'f', '--interactive': 'i', '--recursive': 'r', '--dir': 'd' };
-  /* the options of a later step; R2 empties this as it builds them */
-  var RM_NEXT = { r: 'R2', R: 'R2', f: 'R2', i: 'R2', d: 'R2', '--recursive': 'R2', '--force': 'R2', '--interactive': 'R2', '--dir': 'R2' };
+  /* the options this trainer practises; -d, -I, -v and the rest are real rm options it doesn't */
+  var RM_FLAG = { f: 'f', i: 'i', r: 'r', R: 'r', '--force': 'f', '--interactive': 'i', '--recursive': 'r' };
+  /* the options of a later step: none (R2 built -r, -f and -i; R3 adds safety, not options) */
+  var RM_NEXT = {};
   /* rm reads options anywhere on the line ("--" ends them; "-" alone is a name). kinds[i] is 'opt', 'end' or 'path'.
-   * next: options of a later step; unsupported: real rm options this trainer doesn't practise (-v, -I…). */
+   * flags: every practised flag in order ({ i, f, text }); next: options of a later step; unsupported: real rm
+   * options this trainer doesn't practise (-d, -v, -I…). */
   function rmParse(words) {
-    var o = { r: false, f: false, i: false, d: false, paths: [], kinds: [], bad: null, badAt: -1, unrecognized: false, unsupported: [], next: [] };
+    var o = { r: false, f: false, i: false, paths: [], kinds: [], bad: null, badAt: -1, unrecognized: false, unsupported: [], next: [], flags: [] };
     var ended = false;
     function flag(key, i, text) {
-      if (RM_FLAG[key]) o[RM_FLAG[key]] = true;
+      var f = RM_FLAG[key];
+      if (f === 'f') { o.f = true; o.i = false; }        // GNU: -f turns the questions off...
+      else if (f === 'i') { o.i = true; o.f = false; }   // ...and -i turns them back on: the last one wins
+      else if (f) o[f] = true;
+      if (f) o.flags.push({ i: i, f: f, text: text });
       if (RM_NEXT[key]) o.next.push({ i: i, text: text });
-      else if (!RM_FLAG[key]) o.unsupported.push({ i: i, text: text });
+      else if (!f) o.unsupported.push({ i: i, text: text });
     }
     words.forEach(function (w, i) {
       if (ended || w === '-' || w.charAt(0) !== '-') { o.kinds.push('path'); o.paths.push(w); return; }
@@ -3832,8 +4064,9 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       o.kinds.push('opt');
       if (w.indexOf('--') === 0) {
         var name = w.split('=')[0];
-        if (RM_LONG.indexOf(name) >= 0) flag(name, i, w);
-        else if (!o.bad) { o.bad = w; o.badAt = i; o.unrecognized = true; }
+        if (RM_LONG.indexOf(name) < 0) { if (!o.bad) { o.bad = w; o.badAt = i; o.unrecognized = true; } return; }
+        if (w !== name) o.unsupported.push({ i: i, text: w });   // --interactive=once and the like: not practised here
+        else flag(name, i, w);
         return;
       }
       for (var k = 1; k < w.length; k++) {
@@ -3844,12 +4077,10 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     });
     return o;
   }
-  /* Everything under a folder, children first, then the folder: the order rm -r removes them in. */
-  function subtree(node, segs) {
-    var out = [];
-    if (node.type === 'dir') sortedNames(node).forEach(function (c) { out = out.concat(subtree(node.children[c], segs.concat([c]))); });
-    out.push({ segs: segs, isDir: node.type === 'dir' });
-    return out;
+  /* The topmost of the doomed paths: one per folder or file that went, for the ghost line and "Qué pasó". */
+  function rmTops(doomed) {
+    return doomed.filter(function (d) { return !doomed.some(function (e) { return isStrictPrefix(e.segs, d.segs); }); })
+      .map(function (d) { return { n: d.n, segs: d.segs, isDir: d.isDir }; });
   }
   function rmCount(doomed) {
     var c = { files: 0, dirs: 0 };
@@ -3865,43 +4096,123 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   }
   /* The red count: "Se borrarán 2 archivos, para siempre" */
   function rmCountText(c) { return 'Se ' + (c.files + c.dirs === 1 ? 'borrará ' : 'borrarán ') + rmCountWords(c) + ', para siempre'; }
-  /* One operand of rm, with bash semantics. Mutates state.tree when it works; a failing one changes nothing. */
-  function rmOne(text, n, o, state) {
-    var tree = state.tree, r = { n: n, text: text, code: null, line: null, segs: null, isDir: false, doomed: [] };
+  function prefixOrSame(p, s) { return p.length <= s.length && p.every(function (x, i) { return x === s[i]; }); }
+  /* What rm guards, with -r (R3): "." and ".." as the path's last part ('dot': rm refuses them), "/" ('root':
+   * preserve-root, on by default) and /home/ana or /home ('home': everything of ana's goes, but /home/ana stays: its
+   * folder is root's). Nothing else is guarded: the folder you are in can go (bash allows it). */
+  function rmSafety(text, res, o) {
+    if (!o.r || res.status !== 'ok' || res.node.type !== 'dir') return null;
+    var last = text.replace(/\/+$/, '').split('/').pop();
+    if (last === '.' || last === '..') return 'dot';
+    if (!res.segs.length) return 'root';
+    if (prefixOrSame(res.segs, HOME)) return 'home';
+    return null;
+  }
+  var RM_DOT = "rm: refusing to remove '.' or '..' directory: skipping ";
+  var RM_ROOT = ["rm: it is dangerous to operate recursively on '/'", 'rm: use --no-preserve-root to override this failsafe'];
+  /* bash's questions for rm -i (GNU's wording; "regular empty file" for a file of size 0) */
+  function rmQuestion(kind, shown) {
+    var what = { file: 'remove regular file', empty: 'remove regular empty file', descend: 'descend into directory', rmdir: 'remove directory' }[kind];
+    return 'rm: ' + what + " '" + shown + "'? ";
+  }
+  /* rm reads its answer as Ubuntu's English locale does: one that starts with y or Y (yes) means yes; anything else
+   * means no, an empty line too, and s (sí) too (amended 11-18: the page says "y = yes = sí"). */
+  function rmYes(answer) { return /^[yY]/.test(answer); }
+  function RmAsk(q, info) { this.q = q; this.info = info; }
+  /* One operand of rm, with bash semantics. Mutates state.tree as it removes; a failing one changes nothing.
+   * ask(question, info) -> true to remove (only called with -i). */
+  function rmOne(text, n, o, state, ask) {
+    var tree = state.tree, r = { n: n, text: text, code: null, line: null, segs: null, isDir: false, doomed: [], kept: [], quiet: false, denied: [] };
     function fail(code, why) { r.code = code; r.line = "rm: cannot remove '" + text + "': " + why; return r; }
     var res = resolve(text, state.cwd, tree);
     r.res = res;
     r.segs = res.segs;
-    if (res.status === 'missing') {
-      if (o.f) return r;   // -f: a missing path is silent (R2)
-      return fail('missing', 'No such file or directory');
+    if (o.r && res.lost && /^\.\.?$/.test(rmLastPart(text))) { r.code = 'dot'; r.line = RM_DOT + "'" + text + "'"; return r; }
+    if (res.status === 'missing' || res.status === 'notdir') {
+      if (o.f) { r.quiet = true; return r; }   // -f: a missing path is silent: no error, nothing happens
+      return res.status === 'missing' ? fail('missing', 'No such file or directory') : fail('notdir', 'Not a directory');
     }
-    if (res.status === 'notdir') return fail('notdir', 'Not a directory');
     r.isDir = res.node.type === 'dir';
     if (r.isDir && !o.r) return fail('dir', 'Is a directory');
-    if (!res.segs.length || !writable(tree, res.segs.slice(0, -1))) return fail('permission', 'Permission denied');
-    r.doomed = r.isDir ? subtree(res.node, res.segs) : [{ segs: res.segs, isDir: false }];
-    delete getNode(tree, res.segs.slice(0, -1)).children[nameOf(res.segs)];
+    var guard = rmSafety(text, res, o);
+    r.safety = guard;
+    // R3: rm refuses . and .. (the path as typed), and / (preserve-root); nothing changes
+    if (guard === 'dot') { r.code = 'dot'; r.line = RM_DOT + "'" + text + "'"; return r; }
+    if (guard === 'root') { r.code = 'root'; r.lines = RM_ROOT.slice(); r.line = RM_ROOT[0]; return r; }
+    if (!res.segs.length || !writable(tree, res.segs.slice(0, -1))) {
+      // only /home/ana and /home have root's folder above them: without -r that was "Is a directory" already
+      if (guard !== 'home') return fail('permission', 'Permission denied');
+    }
+    // a thing goes when its folder is ana's; in root's folders it stays: "Permission denied" (rm -rf ~: /home/ana)
+    function remove(segs, isDir, shown) {
+      if (!writable(tree, segs.slice(0, -1))) {
+        r.denied.push(segs);
+        r.line = "rm: cannot remove '" + shown + "': Permission denied";
+        return false;
+      }
+      delete getNode(tree, segs.slice(0, -1)).children[nameOf(segs)];
+      r.doomed.push({ segs: segs, isDir: isDir, n: n });
+      return true;
+    }
+    // returns true when it removed node. Children first, then the folder; with -i, rm asks before each thing
+    function walk(node, segs, shown) {
+      var info = { segs: segs, n: n, isDir: node.type === 'dir' };
+      if (node.type !== 'dir') {
+        info.kind = node.size === 0 ? 'empty' : 'file';
+        if (o.i && !ask(rmQuestion(info.kind, shown), info)) { r.kept.push(segs); return false; }
+        return remove(segs, false, shown);
+      }
+      var names = sortedNames(node);
+      if (names.length) {
+        info.kind = 'descend';
+        if (o.i && !ask(rmQuestion('descend', shown), info)) { r.kept.push(segs); return false; }
+        var all = true, base = shown.slice(-1) === '/' ? shown.slice(0, -1) : shown;
+        names.forEach(function (c) { if (!walk(node.children[c], segs.concat([c]), base + '/' + c)) all = false; });
+        // GNU: a folder that still has something in it (kept, or root's) is not asked about, and stays (no error)
+        if (!all) return false;
+      }
+      info = { segs: segs, n: n, isDir: true, kind: 'rmdir' };
+      if (o.i && !ask(rmQuestion('rmdir', shown), info)) { r.kept.push(segs); return false; }
+      return remove(segs, true, shown);
+    }
+    walk(res.node, res.segs, text);
     return r;
   }
-  /* Run rm with already-expanded arguments: each operand in turn, as bash does; the errors are printed, the rest still run. */
-  function runRm(argv, state) {
+  /* Run rm with already-expanded arguments: each operand in turn, as bash does; the errors are printed, the rest still run.
+   * answers: rm -i's answers so far (true: every answer is yes, for the preview). While a question has no answer yet,
+   * the result has asking: { q, kind, segs, n, isDir, opts }, and state holds what is already gone. */
+  function runRm(argv, state, answers) {
     var o = rmParse(argv);
     if (o.bad) {
-      return { lines: [o.unrecognized ? "rm: unrecognized option '" + o.bad + "'" : "rm: invalid option -- '" + o.bad + "'", RM_TRY],
-        ops: [], results: [], fatal: 'rm-option', bad: o.unrecognized ? o.bad : '-' + o.bad };
+      return { lines: [o.unrecognized ? "rm: unrecognized option '" + o.bad + "'" : "rm: invalid option -- '" + o.bad + "'", RM_TRY], errLines: [0, 1],
+        ops: [], results: [], doomed: [], fatal: 'rm-option', bad: o.unrecognized ? o.bad : '-' + o.bad };
     }
     if (!o.paths.length) {
-      if (o.f) return { lines: [], ops: [], results: [] };   // rm -f with nothing after it prints nothing (R2)
-      return { lines: ['rm: missing operand', RM_TRY], ops: [], results: [], fatal: 'rm-operand' };
+      if (o.f) return { lines: [], errLines: [], ok: true, ops: [], results: [], doomed: [], empty: true };   // rm -f with nothing after it prints nothing
+      return { lines: ['rm: missing operand', RM_TRY], errLines: [0, 1], ops: [], results: [], doomed: [], fatal: 'rm-operand' };
     }
-    var out = { lines: [], ops: [], results: [], doomed: [] };
-    o.paths.forEach(function (t, i) {
-      var r = rmOne(t, i + 1, o, state);
-      out.results.push(r);
-      if (r.line) out.lines.push(r.line);
-      if (r.doomed.length) { out.ops.push({ n: r.n, segs: r.segs, isDir: r.isDir }); out.doomed = out.doomed.concat(r.doomed); }
-    });
+    var out = { lines: [], errLines: [], ops: [], results: [], doomed: [], interactive: o.i }, used = 0;
+    function ask(q, info) {
+      if (answers === true) return true;
+      if (!answers || used >= answers.length) throw new RmAsk(q, info);
+      var ans = answers[used++];
+      out.lines.push(q + ans);   // the terminal shows the question and the answer on one line
+      return rmYes(ans);
+    }
+    try {
+      o.paths.forEach(function (t, i) {
+        var r = rmOne(t, i + 1, o, state, ask);
+        out.results.push(r);
+        (r.lines || (r.line ? [r.line] : [])).forEach(function (l) { out.errLines.push(out.lines.length); out.lines.push(l); });
+        out.doomed = out.doomed.concat(r.doomed);
+      });
+    } catch (e) {
+      if (!(e instanceof RmAsk)) throw e;
+      out.asking = { q: e.q, kind: e.info.kind, segs: e.info.segs, n: e.info.n, isDir: e.info.isDir,
+        opts: argv.filter(function (w, i) { return o.kinds[i] === 'opt'; }).join(' ') };
+    }
+    out.ok = !out.errLines.length;
+    out.ops = rmTops(out.doomed);
     return out;
   }
   /* One Spanish line per bash error. */
@@ -3911,14 +4222,17 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       case 'dir': return 'rm: «' + r.text + '» es una carpeta: sin -r, rm no borra carpetas.';
       case 'notdir': return 'rm: «' + nameOf(r.res.fileInWay) + '» es un archivo, no una carpeta: no hay nada dentro que borrar.';
       case 'permission': return 'Permiso denegado: / y /home son del sistema (root), no tuyas; solo puedes borrar cosas dentro de /home/ana.';
+      case 'dot': return 'rm no borra «.» (la carpeta donde estás) ni «..» (la de arriba): se salta «' + r.text + '».';
+      case 'root': return 'rm se niega a borrar la raíz /, con todo el sistema dentro: no borra nada. Esa protección viene puesta.';
     }
+    if (r.denied && r.denied.length) return 'rm no puede quitar ' + abs(r.denied[0]) + ': ' + abs(r.denied[0].slice(0, -1)) + ' es de root. Todo lo que había dentro ya se borró.';
     return '';
   }
   function rmNotes(run) {
     if (run.fatal === 'rm-option') return ['rm no conoce la opción «' + run.bad + '»: no es una opción de rm.'];
     if (run.fatal) return ['Falta qué borrar: rm necesita al menos un archivo.'];
     var out = [];
-    run.results.forEach(function (r) { var s = r.code && rmNote(r); if (s && out.indexOf(s) < 0) out.push(s); });
+    run.results.forEach(function (r) { var s = (r.code || r.denied.length) && rmNote(r); if (s && out.indexOf(s) < 0) out.push(s); });
     return out;
   }
   /* "notas.txt y receta.pdf de descargas", "notas.txt de descargas y cv.pdf de documentos" */
@@ -3932,13 +4246,22 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     return andList(groups.map(function (g) { return andList(g.names) + ' de ' + esc(g.place); }));
   }
   function bdel(s) { return '<b class="hldel">' + esc(s) + '</b>'; }
-  /* The folder before and after: [notas.txt] [playa.jpg] [receta.pdf], what goes struck through. Only when everything
-   * that goes is in one folder, and the folder is small enough to draw whole. */
-  function rmVisOf(tree, ops, done) {
+  /* The side's picture. One folder removed with -r: the folder itself, with what is inside it, all of it going
+   * (sub). Otherwise the folder before and after: [notas.txt] [playa.jpg] [receta.pdf], what goes struck through;
+   * only when everything that goes is in one folder, and the folder is small enough to draw whole. */
+  function rmVisOf(tree, ops, done, doomed) {
     if (!ops.length) return null;
+    if (ops.length === 1 && ops[0].isDir && doomed) {
+      var top = ops[0].segs, kids = doomed.filter(function (d) { return d.segs.length === top.length + 1 && isStrictPrefix(top, d.segs); });
+      if (kids.length > 4) return null;
+      return { sub: true, place: nameOf(top) + '/', n: ops[0].n, done: !!done, items: kids.map(function (k) {
+        return { name: nameOf(k.segs) + (k.isDir ? '/' : ''), gone: true, n: 0, isDir: k.isDir };
+      }).sort(function (x, y) { return byLocale(x.name, y.name); }) };
+    }
     var parent = ops[0].segs.slice(0, -1);
     if (!ops.every(function (op) { return sameSegs(op.segs.slice(0, -1), parent); })) return null;
     var node = getNode(tree, parent), gone = {};
+    if (!node) return null;
     ops.forEach(function (op) { gone[nameOf(op.segs)] = op; });
     // before Enter the tree still has them; after it, only their names are left to draw
     var names = shownNames(node).filter(function (nm) { return !gone[nm]; });
@@ -3953,15 +4276,34 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   function rmResult(run, next) {
     if (run.fatal === 'rm-option') return { tone: 'bad', html: 'rm mostró un error: no conoce la opción ' + code(run.bad) + '. No borró nada.' };
     if (run.fatal) return { tone: 'bad', html: 'rm mostró un error: falta qué borrar. No borró nada.' };
-    var ops = run.ops, bad = run.results.filter(function (r) { return r.code; }), parts = [];
-    if (ops.length) {
-      var c = rmCount(run.doomed), one = c.files + c.dirs === 1;
-      parts.push('Listo: borraste ' + (one ? (ops[0].isDir ? 'la carpeta ' : '') + bdel(nameOf(ops[0].segs)) : '<b class="hldel">' + rmCountWords(c) + '</b>') + '. ' +
+    if (run.empty) return { tone: 'ok', html: 'Con ' + code('-f') + ' y sin nada que borrar, rm no hizo nada y no dijo nada.' };
+    var ops = run.ops, bad = run.results.filter(function (r) { return r.code; }), parts = [], kept = [], quiet = [];
+    run.results.forEach(function (r) { kept = kept.concat(r.kept); if (r.quiet) quiet.push(r.text); });
+    var wipe = run.results.filter(function (r) { return r.safety === 'home' && r.denied.length; })[0];
+    if (wipe) {
+      // rm -rf ~: everything of yours is gone; /home/ana stays, empty, because /home is root's
+      parts.push('Listo: borraste <b class="hldel">todo lo tuyo</b> (' + rmCountWords(rmCount(run.doomed)) + '), también lo oculto. ' +
+        '<b>En una terminal real no vuelven.</b> ' + code(abs(wipe.denied[0])) + ' se quedó, vacía: ' + code(abs(wipe.denied[0].slice(0, -1))) +
+        ' es de root, y por eso rm mostró el error de arriba.');
+    } else if (ops.length) {
+      var c = rmCount(run.doomed), one = c.files + c.dirs === 1, oneDir = ops.length === 1 && ops[0].isDir;
+      parts.push('Listo: borraste ' + (one || (oneDir && !kept.length) ? (ops[0].isDir ? 'la carpeta ' : '') + bdel(nameOf(ops[0].segs)) +
+        (one ? '' : ' con todo lo de adentro (<b class="hldel">' + rmCountWords(c) + '</b>)') : '<b class="hldel">' + rmCountWords(c) + '</b>') + '. ' +
         '<b>En una terminal real no ' + (one ? 'vuelve' : 'vuelven') + '.</b>');
     }
+    if (kept.length) parts.push('Respondiste que no' + (ops.length ? ' a ' : ': ') + andList(kept.map(function (s) { return '<b>' + esc(nameOf(s)) + '</b>'; })) +
+      (ops.length ? ', y ' + (kept.length === 1 ? 'se quedó' : 'se quedaron') : (kept.length === 1 ? ' se quedó' : ' se quedaron')) + ' donde ' + (kept.length === 1 ? 'estaba.' : 'estaban.'));
+    if (quiet.length) parts.push(andList(quiet.map(q)) + (quiet.length === 1 ? ' no existía' : ' no existían') + ': con ' + code('-f') + ', rm no dijo nada.');
+    var refused = bad.filter(function (r) { return r.code === 'dot' || r.code === 'root'; });
+    if (refused.length) parts.push('rm se negó a borrar ' + andList(refused.map(function (r) { return q(r.text); })) + ': ' +
+      (refused.some(function (r) { return r.code === 'root'; }) ? 'protege la raíz ' + code('/') : 'no borra ' + code('.') + ' ni ' + code('..')) + '.');
+    bad = bad.filter(function (r) { return refused.indexOf(r) < 0; });
     if (bad.length) parts.push((ops.length ? 'No pudo borrar ' : 'rm mostró un error y no borró ') + andList(bad.map(function (r) { return q(r.text); })) +
       (ops.length ? ': el error está arriba.' : ': el árbol no cambió.'));
-    else parts.push('rm no muestra nada cuando sale bien.');
+    else if (refused.length && !ops.length) parts.push('El árbol no cambió.');
+    else if (!run.interactive && !quiet.length && !wipe) parts.push('rm no muestra nada cuando sale bien.');
+    bad = bad.concat(refused);
+    if (!ops.length && !kept.length && !bad.length) parts.push('No se borró nada.');
     // the ghost line in the tree: what was there, by folder, until the learner types again
     var gone = [], by = {};
     ops.forEach(function (op) {
@@ -3969,28 +4311,71 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       if (!by[k]) { by[k] = { parent: op.segs.slice(0, -1), names: [] }; gone.push(by[k]); }
       by[k].names.push(nameOf(op.segs) + (op.isDir ? '/' : ''));
     });
-    return { tone: bad.length ? (ops.length ? 'warn' : 'bad') : 'ok', html: parts.join(' '),
-      deleted: ops.map(function (op) { return abs(op.segs); }), gone: gone, rmVis: rmVisOf(next.tree, ops, true) };
+    // the folder you were in went too: you are "in" a folder that no longer exists, until you cd out
+    var lostNow = !getNode(next.tree, next.cwd) && run.doomed.some(function (d) { return prefixOrSame(d.segs, next.cwd); });
+    if (lostNow) parts.push('<span class="lostline">Borraste la carpeta donde estás: ahora estás en una carpeta que ya no existe. Sal con ' + code('cd ~') + '.</span>');
+    return { tone: bad.length || wipe ? (ops.length ? 'warn' : 'bad') : 'ok', html: parts.join(' '),
+      deleted: ops.map(function (op) { return abs(op.segs); }), gone: gone, rmVis: wipe ? null : rmVisOf(next.tree, ops, true, run.doomed) };
   }
 
   /* ---------- rm: the live analysis ---------- */
-  var RM_FLAGTEXT = { missing: 'no existe', dir: 'es una carpeta: falta -r', notdir: 'hay un archivo en el camino', permission: 'sin permiso' };
-  var RM_GO = { missing: 'no existe', dir: 'es una carpeta', notdir: 'no es una carpeta', permission: 'sin permiso' };
+  var RM_FLAGTEXT = { missing: 'no existe', dir: 'es una carpeta: falta -r', notdir: 'hay un archivo en el camino', permission: 'sin permiso',
+    root: 'rm se niega: es la raíz' };
+  var RM_GO = { missing: 'no existe', dir: 'es una carpeta', notdir: 'no es una carpeta', permission: 'sin permiso', dot: 'rm se niega', root: 'rm protege /' };
+  /* R3: the -rf banner's first line, and the two lines that say what rm protects and what it doesn't */
+  var RM_RF_HEAD = '<code>rm -rf</code> borra sin preguntar y sin avisar: <b>revisa <code>pwd</code> y la ruta antes de Enter</b>';
+  var RM_DOT_BUT = 'rm se niega con <code>.</code> y <code>..</code>; pero <code>rm -rf ../documentos</code> sí borraría.';
+  var RM_ROOT_BUT = 'Solo <code>/</code> está protegida: <code>rm -rf ~</code> sí borra todo lo tuyo.';
+  /* what each practised option does: its card says it ("-f" keeps its explanation even among four cards) */
+  var RM_OPT = {
+    r: { mean: 'recursivo', note: 'borra la carpeta y todo lo que tiene dentro', short: '-r: la carpeta con todo lo de dentro' },
+    f: { mean: 'fuerza: no avisa', note: 'no te avisa si algo no existe, y no pregunta por archivos protegidos', short: '-f: no avisa ni pregunta' },
+    i: { mean: 'pregunta antes', note: 'pregunta antes de borrar cada cosa: respondes y (yes = sí) o n (no)', short: '-i: pregunta antes de cada cosa' }
+  };
+  var RM_QUIET = 'no existe · -f no avisa';
   /* Why one operand fails, in Spanish, before running. */
   function rmReason(r, cands) {
     switch (r.code) {
       case 'missing': return missingText(r.res, cands);
       case 'notdir': return missingText(r.res);
-      case 'dir': return code(r.text) + ' es una carpeta, y sin ' + code('-r') + ' rm solo borra archivos. Para borrar una carpeta con todo lo de dentro se usa ' +
-        code('-r') + ': lo verás en el siguiente paso.';
+      case 'dir': return code(r.text) + ' es una carpeta, y sin ' + code('-r') + ' rm solo borra archivos. Para borrar la carpeta con todo lo de dentro, escribe ' +
+        code('rm -r ' + r.text) + '.';
       case 'permission': return code(abs(r.segs.slice(0, -1))) + ' es del sistema (root), no tuya: no puedes borrar nada ahí. Solo puedes cambiar cosas dentro de ' + code('/home/ana') + '.';
+      case 'dot': return '<code class="err">' + esc(r.text) + '</code> termina en ' + code(rmLastPart(r.text)) + ', y rm se niega a borrar ' + code('.') + ' y ' + code('..') + '.';
+      case 'root': return '<code class="err">/</code> es la raíz, con todo el sistema dentro, y rm la protege.';
     }
     return '';
+  }
+  function rmLastPart(text) { return text.replace(/\/+$/, '').split('/').pop(); }
+  /* The -rf danger banner (R3): "rm -rf borra sin preguntar y sin avisar: revisa pwd y la ruta antes de Enter", then
+   * where you are and the absolute target, then the count. With ~ it is the strongest one: "Esto borra TODO lo tuyo".
+   * It goes in the banner's place (#banner, class danger) and keeps the count's data-testid. */
+  function rmDanger(o, ops, run, c, cwd, wipe, cwdGone) {
+    var main = wipe || ops.filter(function (op) { return op.ok; })[0] || ops.filter(function (op) { return op.r && op.r.segs && (op.r.code === 'dot' || op.r.code === 'root'); })[0] || null;
+    var goes = run.doomed.length > 0, more = ops.length - 1;
+    var target = main ? abs(main.r.segs) : '—';
+    var note = !main ? '' : wipe ? 'todo lo de dentro' : main.r.code === 'root' ? 'todo el sistema' : sameSegs(main.r.segs, cwd) ? 'es donde estás'
+      : main.outside && startOf(main.t.text) === 'here' ? 'fuera de donde estás' : '';
+    if (more > 0) note = (note ? note + ' · ' : '') + 'y ' + more + ' más';
+    var hidden = run.doomed.some(function (d) { return isHidden(nameOf(d.segs)); });
+    var count = goes ? '<span data-testid="del-count">' + esc(rmCountText(c)).replace(rmCountWords(c), '<b>' + rmCountWords(c) + '</b>')
+        .replace(', para siempre', hidden ? ', también los ocultos, para siempre' : ', para siempre') + '</span>.'
+      : '<span data-testid="del-count">Esta vez no se borra nada' + (ops.some(function (op) { return op.r && op.r.code === 'root'; }) ? ': rm protege la raíz <code>/</code>'
+        : ops.some(function (op) { return op.r && op.r.code === 'dot'; }) ? ': rm se niega con <code>.</code> y <code>..</code>' : '') + '</span>';
+    var lost = cwdGone ? ' <i>ya no existe</i>' : '';
+    var html = (wipe ? '<div class="dg-top" data-testid="danger-top">Esto borra <b>TODO</b> lo tuyo</div>' : '') +
+      (o.r && o.f ? '<div class="dg-head" data-testid="danger-head"><svg width="20" height="20"><use href="#i-warn"/></svg><span>' + RM_RF_HEAD + '</span></div>' : '') +
+      '<div class="dg-where"><span class="dg-k"><svg><use href="#i-pin"/></svg>estás en</span><span class="dg-t here"><code data-testid="danger-cwd">' + esc(abs(cwd)) + '</code>' + lost + '</span>' +
+      '<span class="dg-k to">' + (goes ? 'borras' : 'borrarías') + '</span><span class="dg-t"><code data-testid="danger-target">' + esc(target) + '</code>' +
+      (note ? '<i data-testid="danger-note">' + esc(note) + '</i>' : '') + '</span></div>' +
+      '<div class="dg-count"><svg width="17" height="17"><use href="#i-' + (goes ? 'warn' : 'shield') + '"/></svg><span>' + count + '</span></div>';
+    return { cls: 'danger' + (goes ? '' : ' calm') + (wipe ? ' home' : ''), raw: html, danger: true };
   }
   function rmAnalyze(a, cmd, args, state) {
     var tree = state.tree, cwd = state.cwd;
     a.argv = args.map(function (t) { return expandTilde(t.text); });
     var o = rmParse(args.map(function (t) { return t.text; }));
+    a.rmOpts = { r: o.r, f: o.f, i: o.i };   // R3: the -rf danger banner reads these
     function mark(segs, m) { var k = abs(segs); (a.marks[k] = a.marks[k] || []).push(m); }
     a.tokens.push(tok(cmd, 'cmd', 0, 'comando', 'cmd'));
     var cmdCard = { role: 'cmd', tone: 'cmd', label: 'comando', val: 'rm', mean: 'borra' };
@@ -3998,8 +4383,14 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     var pips = [], nOpt = 0, ops = [], later = {}, unsup = {};
     o.next.forEach(function (u) { (later[u.i] = later[u.i] || []).push(u.text); });
     o.unsupported.forEach(function (u) { (unsup[u.i] = unsup[u.i] || []).push(u.text); });
-    var sim = cloneState(state), run = runRm(a.argv, sim);
+    // -i: the preview is what goes if every answer is yes
+    var sim = cloneState(state), run = runRm(a.argv, sim, true);
     a.run = run;
+    // of -f and -i, the last one counts (GNU): an earlier one is crossed out on its card
+    var lastFI = null;
+    o.flags.forEach(function (fl) { if (fl.f === 'f' || fl.f === 'i') lastFI = fl; });
+    function off(fl) { return (fl.f === 'f' || fl.f === 'i') && lastFI && lastFI.f !== fl.f; }
+    var optCards = args.filter(function (t, i) { return o.kinds[i] === 'opt'; }).length;
     var last = args.length - 1;
     args.forEach(function (t, i) {
       if (o.kinds[i] !== 'path') {
@@ -4011,34 +4402,64 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         a.tokens.push(ot);
         pips.push(bad ? 'x' : soon || un ? 'w' : 'op');
         var c = { role: 'opt', badge: '-', tone: tone, label: 'opción', val: t.text };
+        var mine = o.flags.filter(function (fl) { return fl.i === i; }), seen = {};
+        mine = mine.filter(function (fl) { if (seen[fl.f]) return false; seen[fl.f] = true; return true; });
         if (bad) c.flag = { icon: 'x', text: 'rm no la conoce' };
         else if (soon) c.flag = { icon: 'warn', text: 'llega en el siguiente paso' };
         else if (un) c.flag = { icon: 'warn', text: 'aquí no la practicas' };
-        else c.mean = 'fin de las opciones';
+        else if (!mine.length) c.mean = 'fin de las opciones';
+        else {
+          var on = mine.filter(function (fl) { return !off(fl); }), gone = mine.filter(off);
+          if (mine.length === 1) { c.mean = RM_OPT[mine[0].f].mean; c.note = RM_OPT[mine[0].f].note; }
+          else { c.mean = mine.map(function (fl) { return RM_OPT[fl.f].mean.split(':')[0]; }).join(' + '); c.note = on.map(function (fl) { return RM_OPT[fl.f].short; }).join(' · '); }
+          if (gone.length) {
+            // "-f -i": the -f doesn't count; "-i -f": the -i doesn't
+            var winner = '-' + lastFI.f;
+            c.note = (on.length ? on.map(function (fl) { return RM_OPT[fl.f].short; }).join(' · ') + ' · ' : '') +
+              gone.map(function (fl) { return '-' + fl.f; }).join(' ') + ' no cuenta: la anula el ' + winner + ' de después';
+            if (!on.length) { c.tone = 'warn'; c.flag = { icon: 'warn', text: 'no cuenta: gana ' + winner }; ot.tone = 'warn'; pips[pips.length - 1] = 'w'; }
+          }
+          c.opt = mine.map(function (fl) { return fl.f; }).join('');
+          if (optCards === 1) c.cls = 'full';   // among four cards, the option keeps its explanation
+          // R3: -r and -f on one card is the dangerous pair
+          if (!gone.length && seen.r && seen.f) {
+            c.mean = 'la combinación peligrosa';
+            c.note = '-r: con todo lo de dentro · -f: sin preguntar ni avisar';
+            c.cls = (c.cls ? c.cls + ' ' : '') + 'rf';
+          }
+        }
+        c.abs = c.flag ? c.flag.text : c.mean;   // the one-line form (four or more cards)
         a.cards.push(c);
         return;
       }
-      var n = ops.length + 1, r = run.results[n - 1] || null, ok = !!r && !r.code;
+      var n = ops.length + 1, r = run.results[n - 1] || null, quiet = !!r && r.quiet, ok = !!r && !r.code && !quiet;
       var typingHere = i === last && !a.trailingSpace;
       var cands = r && r.code === 'missing' && typingHere ? candidatesFor(resolve(a.argv[i], cwd, tree), tree) : [];
-      var tone = !r ? 'del' : ok ? 'del' : cands.length ? 'cand' : 'bad';
-      var card = { role: 'del', n: n, tone: tone, label: 'se borra', val: t.text, pk: KIND_TEXT[startOf(t.text)], pkTone: tone === 'del' ? 'del' : null };
-      if (r && r.segs && r.code !== 'missing' && r.code !== 'notdir') card.path = abs(r.segs);
+      var tone = !r ? 'del' : quiet ? 'quiet' : ok ? 'del' : cands.length ? 'cand' : 'bad';
+      var card = { role: 'del', n: n, tone: tone, label: 'se borra', val: t.text, pk: KIND_TEXT[startOf(t.text)], pkTone: tone === 'del' ? 'del' : tone === 'quiet' ? 'quiet' : null };
+      if (r && r.segs && r.code !== 'missing' && r.code !== 'notdir' && !quiet) card.path = abs(r.segs);
       if (card.path && card.path.length > 28) card.cls = 'long';   // a long path keeps its "ruta …" tag in view
-      if (ok) card.mean = r.isDir ? 'carpeta' : 'archivo';
-      else if (cands.length) card.cand = { typed: t.text, names: cands.map(function (c) { return c.name + (c.isDir ? '/' : ''); }) };
-      else if (r) { card.flag = { icon: r.code === 'permission' ? 'lock' : 'x', text: RM_FLAGTEXT[r.code] }; card.looked = r.code === 'missing' ? abs(r.segs) : null; }
+      var outside = ok && startOf(t.text) !== 'root' && !isStrictPrefix(cwd, r.segs);
+      if (ok && r.safety === 'home') { card.flag = { icon: 'warn', text: 'tu carpeta: TODO lo de dentro' }; card.abs = card.flag.text; }
+      else if (ok && o.r && o.f && outside && startOf(t.text) === 'here') { card.flag = { icon: 'warn', text: 'fuera de donde estás' }; card.abs = card.flag.text; }
+      else if (ok) card.mean = r.isDir ? 'carpeta, con todo' : 'archivo';
+      else if (quiet) {
+        card.flag = { icon: 'x', text: RM_QUIET };
+        card.abs = RM_QUIET;
+        card.looked = r.res.status === 'missing' ? abs(r.segs) : null;
+      } else if (cands.length) card.cand = { typed: t.text, names: cands.map(function (c) { return c.name + (c.isDir ? '/' : ''); }) };
+      else if (r) { card.flag = { icon: r.code === 'permission' ? 'lock' : 'x', text: r.code === 'dot' ? 'rm se niega: termina en ' + rmLastPart(t.text) : RM_FLAGTEXT[r.code] }; card.looked = r.code === 'missing' ? abs(r.segs) : null; }
       var tk = tok(t, 'del', n, n + ' · se borra', tone);
       tk.sup = String(n);
       a.tokens.push(tk);
-      pips.push(tone === 'bad' ? 'x' : tone === 'cand' ? 'w' : 'del');
+      pips.push(tone === 'bad' ? 'x' : tone === 'cand' || tone === 'warn' ? 'w' : tone === 'quiet' ? 'quiet' : 'del');
       a.cards.push(card);
-      ops.push({ n: n, t: t, i: i, r: r, ok: ok, cands: cands, typingHere: typingHere });
+      ops.push({ n: n, t: t, i: i, r: r, ok: ok, quiet: quiet, cands: cands, typingHere: typingHere, outside: outside });
     });
     var m = ops.length;
     a.count = { n: nOpt + m, slots: nOpt + Math.max(1, m), pips: pips,
       text: (nOpt ? nOpt + (nOpt === 1 ? ' opción' : ' opciones') + ' · ' : '') + m + (m === 1 ? ' argumento' : ' argumentos') +
-        (!m ? ' · falta qué borrar' : '') };
+        (!m && !o.f ? ' · falta qué borrar' : '') };
 
     if (o.bad) {
       // bash stops at the first option it doesn't know: nothing is removed
@@ -4050,7 +4471,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       return;
     }
     if (o.next.length || o.unsupported.length) {
-      // -r, -f, -i and -d come in the next step; other real rm options aren't practised: a friendly note, and nothing runs
+      // options of a later step (none now), and real rm options this trainer doesn't practise: a friendly note, and nothing runs
       a.state = 'rm-bad';
       a.blocked = true;
       a.count.status = 'short';
@@ -4058,12 +4479,20 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       o.next.concat(o.unsupported).forEach(function (u) { if (list.indexOf(u.text) < 0) list.push(u.text); });
       var soonOnly = !o.unsupported.length;
       a.explain = { tone: 'note', html: andList(list.map(code)) + (list.length === 1 ? ' es una opción de ' : ' son opciones de ') + code('rm') +
-        (soonOnly ? ' que llega en el siguiente paso del entrenador. Por ahora practica ' + code('rm') + ' con archivos: bórrala y no se ejecuta nada.'
-          : ' que aquí no practicas. Bórrala y no se ejecuta nada.') };
+        (soonOnly ? ' que llega en el siguiente paso del entrenador. Bórrala y no se ejecuta nada.'
+          : ' que aquí no practicas. Aquí practicas ' + code('-r') + ', ' + code('-f') + ' e ' + code('-i') + '. Bórrala y no se ejecuta nada.') };
       a.go = { kind: 'blocked', html: soonOnly ? code(list[0]) + ' llega en el siguiente paso' : 'Quita la opción para seguir' };
       return;
     }
     if (!m) {
+      if (o.f) {
+        // rm -f with nothing after it: nothing to do, and nothing to say
+        a.state = 'rm-f-empty';
+        a.count.status = 'short';
+        a.explain = { tone: 'note', html: 'Con ' + code('-f') + ' y sin nada que borrar, rm no hace nada y no dice nada: ni siquiera que falta qué borrar.' };
+        a.go = { kind: 'enter', html: 'no hace nada' };
+        return;
+      }
       a.state = 'rm-empty';
       a.count.status = 'short';
       a.cards.push({ role: 'empty', n: 1, label: 'se borra', val: 'falta: qué borrar', path: 'escribe un espacio y el archivo' });
@@ -4073,33 +4502,57 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       return;
     }
     cmdCard.lines = ['<b class="del">para siempre: no hay papelera ni deshacer</b>'];
+    cmdCard.abs = 'para siempre';
 
-    // the tree: everything Enter removes is struck through in red, "se borra"; what fails is marked as an error
-    var good = ops.filter(function (op) { return op.ok; }), bad = ops.filter(function (op) { return !op.ok; });
+    // the tree: everything Enter removes is struck through in red, "se borra"; a folder with -r says it goes with
+    // everything inside; what fails is marked as an error; a missing path with -f is a quiet ghost
+    var good = ops.filter(function (op) { return op.ok; }), bad = ops.filter(function (op) { return !op.ok && !op.quiet; });
+    var quiets = ops.filter(function (op) { return op.quiet; });
     ops.forEach(function (op) {
       var r = op.r;
-      r.doomed.forEach(function (d) { mark(d.segs, { type: 'del', n: op.n, top: sameSegs(d.segs, r.segs) }); });
+      r.doomed.forEach(function (d) {
+        var top = sameSegs(d.segs, r.segs);
+        // rm -rf ~: what is right inside your folder says "se borra"; deeper rows are struck through without a word
+        var label = top && d.isDir ? 'se borra con todo lo de adentro' : null;
+        if (r.safety === 'home') label = r.denied.some(function (s) { return sameSegs(s, d.segs.slice(0, -1)); }) ? 'se borra' : '';
+        mark(d.segs, { type: 'del', n: op.n, top: top, sub: !top, ask: o.i, label: label });
+      });
+      // what stays: rm refuses . and .. and /; with ~, /home/ana (and /home) stay because they are in root's folders
+      if (r.code === 'dot') mark(r.segs, { type: 'refuse', n: op.n, label: 'rm se niega: no la borra' });
+      else if (r.code === 'root') mark(r.segs, { type: 'refuse', n: op.n, label: 'rm se niega: protege la raíz' });
+      r.denied.forEach(function (s) { mark(s, { type: 'keep', n: op.n, label: 'queda: ' + abs(s.slice(0, -1)) + ' es de root' }); });
+      if (r.safety === 'home' && !r.denied.some(function (s) { return sameSegs(s, r.segs); })) mark(r.segs, { type: 'keep', n: op.n, label: 'queda: es de root' });
       if (r.code === 'dir') mark(r.segs, { type: 'notdir', n: op.n, label: 'carpeta: falta -r' });
       else if (r.code === 'notdir') mark(r.res.fileInWay, { type: 'notdir', n: op.n });
       else if (r.code === 'permission') mark(r.segs.slice(0, -1), { type: 'perm', n: op.n });
-      else if (r.code === 'missing') {
+      else if (r.code === 'missing' || (op.quiet && r.res.status === 'missing')) {
         op.cands.forEach(function (c) { mark(c.segs, { type: 'candidate', tone: 'a1', label: '¿' + c.name + (c.isDir ? '/' : '') + '?', tab: op.cands.length === 1 }); });
         var g = r.res.failParent && r.res.failParent.concat([r.res.failName]);
-        if (!op.cands.length && g && !getNode(tree, g)) a.ghosts.push({ segs: g, isDir: false, n: op.n, label: 'no existe' });
+        if (!op.cands.length && g && !getNode(tree, g)) a.ghosts.push({ segs: g, isDir: false, n: op.n, label: op.quiet ? RM_QUIET : 'no existe', quiet: op.quiet });
       }
       if (startOf(op.t.text) === 'root') a.showRoot = true;
     });
     var c = rmCount(run.doomed);
+    var wipe = ops.filter(function (op) { return op.ok && op.r.safety === 'home'; })[0] || null;
+    var hereGoes = run.doomed.some(function (d) { return prefixOrSame(d.segs, cwd); });   // the folder you are in goes too
     a.hasPreview = run.doomed.length > 0;
     a.doomed = run.doomed;
     a.rmCount = c;
-    // the red count, over the side: what goes, and that it is for ever
-    if (a.hasPreview) a.banner = { cls: 'del', html: '<span class="bn-main"><span data-testid="del-count">' + esc(rmCountText(c)).replace(rmCountWords(c), '<b>' + rmCountWords(c) + '</b>') +
-      '</span><span class="bn-sub" data-testid="del-forever">La terminal no tiene papelera ni deshacer.</span></span>' };
-    // the side: one folder drawn whole, before Enter; or the route to a single path that isn't just a name here
-    a.rmVis = rmVisOf(tree, run.ops, false);
+    // the red count, over the side: what goes, and that it is for ever (with -i: if every answer is yes)
+    if (a.hasPreview) {
+      var ct = esc(rmCountText(c)).replace(rmCountWords(c), '<b>' + rmCountWords(c) + '</b>');
+      if (o.i) ct = 'Si dices que sí, s' + ct.slice(1);
+      a.banner = { cls: 'del', html: '<span class="bn-main"><span data-testid="del-count">' + ct +
+        '</span><span class="bn-sub" data-testid="del-forever">' + (o.i ? 'rm te pregunta antes de cada uno. ' : '') + 'La terminal no tiene papelera ni deshacer.</span></span>' };
+    }
+    // R3: -r and -f together (or ~ with -r): the danger banner takes the count's place. Where you are, what goes, the count
+    if ((o.r && o.f) || wipe) a.banner = rmDanger(o, ops, run, c, cwd, wipe, !getNode(tree, cwd));
+    // the side: the folder that goes with -r, or one folder drawn whole; or the route to a single path that isn't just a name here
+    a.rmVis = wipe ? null : rmVisOf(tree, rmTops(run.doomed), false, run.doomed);
     var only = m === 1 ? ops[0] : null;
-    if (only && !a.rmVis) {
+    // the banner already names the target of ~, / and ..: the side keeps its room for what happens
+    a.hideRoute = !!(a.banner && a.banner.danger && !a.rmVis && ops.some(function (op) { return op.r && (op.r.safety || op.r.code === 'dot'); }));
+    if (only && !a.rmVis && !only.quiet && !a.hideRoute) {
       var res1 = resolve(a.argv[only.i], cwd, tree);
       if (res1.status === 'ok' || res1.status === 'notdir' || (res1.status === 'missing' && !only.cands.length)) {
         var route = routeOf(res1, cwd);
@@ -4110,33 +4563,91 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         }
       }
     }
-    if (m <= 3) a.eqs = ops.filter(function (op) { return op.r && op.r.segs && op.r.code !== 'missing' && op.r.code !== 'notdir'; }).map(function (op) {
-      return { n: op.n, role: 'del', typed: op.t.text, shown: abs(op.r.segs), tone: op.ok ? 'del' : 'bad', chip: op.r.code === 'dir' ? 'carpeta' : null, chipTone: 'err', chips: [] };
+    // R3: a path that leaves where you are is drawn in red on the tree, with how far up it climbs
+    var climb = ops.filter(function (op) { return (op.outside && !op.r.safety) || (op.r && op.r.code === 'dot' && startOf(op.t.text) === 'here'); })[0];
+    if (climb) {
+      var cr = routeOf(resolve(a.argv[climb.i], cwd, tree), cwd);
+      if (cr.nodes.length > 1) {
+        a.route = cr;
+        a.route.tone = climb.ok ? 'del' : 'bad';
+        a.route.climb = true;
+      }
+    }
+    a.wipe = !!wipe;
+    if (a.banner && a.banner.danger) a.eqs = [];   // the danger banner already gives the absolute path
+    else if (m <= 3) a.eqs = ops.filter(function (op) { return op.r && op.r.segs && op.r.code !== 'missing' && op.r.code !== 'notdir' && (!op.quiet || op.r.res.status === 'missing'); }).map(function (op) {
+      return { n: op.n, role: 'del', typed: op.t.text, shown: abs(op.r.segs), tone: op.quiet ? 'quiet' : op.ok ? 'del' : 'bad',
+        chip: op.r.code === 'dir' ? 'carpeta' : op.ok && op.r.isDir ? 'carpeta' : null, chipTone: op.ok ? 'del' : 'err', chips: [] };
     });
     a.state = bad.length === m ? 'rm-err' : 'rm';
     if (bad.length) a.count.status = bad.some(function (op) { return !op.cands.length; }) ? 'bad' : 'short';
-    else { a.count.status = 'del'; a.count.text += m === 1 ? ' · se borra' : ' · se borran'; }
+    else if (quiets.length) {
+      a.count.status = good.length ? 'del' : 'short';
+      a.count.text += good.length ? ' · se ' + (good.length === 1 ? 'borra ' : 'borran ') + good.length : ' · no se borra nada';
+    } else {
+      a.count.status = 'del';
+      a.count.text += (m === 1 ? ' · se borra' : ' · se borran') + (good.some(function (op) { return op.r.isDir; }) ? ' con todo' : '') + (o.i ? ' · pregunta antes' : '');
+    }
     if (m === 1 && bad.length && !bad[0].cands.length) a.count.text += ' · ' + RM_GO[bad[0].r.code];
+    if (wipe && !bad.length) a.count.text = a.count.text.replace(/ · se borran? con todo$/, '') + ' · borra TODO lo tuyo';
 
     // what Enter will do, in Spanish
     var parts = [];
     if (good.length) {
-      parts.push('Vas a borrar ' + rmWhat(good.map(function (op) { return { segs: op.r.segs, isDir: op.r.isDir }; }), bdel) + '. ' +
-        'No ' + (c.files + c.dirs === 1 ? 'va' : 'van') + ' a ninguna papelera: <b>' + (c.files + c.dirs === 1 ? 'desaparece' : 'desaparecen') + '</b>.');
-      if (only && startOf(only.t.text) === 'here') parts.push(walkText(resolve(a.argv[only.i], cwd, tree), false));
-      else if (only) parts.push('La ruta empieza ' + (startOf(only.t.text) === 'root' ? 'en la raíz ' + code('/') : 'en ' + code('~')) + ', no donde estás.');
+      var dirs = good.filter(function (op) { return op.r.isDir; });
+      var inside = '';
+      if (dirs.length === 1 && good.length === 1) {
+        var kids = run.doomed.filter(function (d) { return d.segs.length === dirs[0].r.segs.length + 1 && isStrictPrefix(dirs[0].r.segs, d.segs); })
+          .map(function (d) { return nameOf(d.segs); }).sort(byLocale);
+        inside = kids.length ? ' con todo lo que tiene dentro (' + andList(kids.slice(0, 3).map(function (k) { return '<b>' + esc(k) + '</b>'; })) +
+          (kids.length > 3 ? ' y más' : '') + ')' : ', que está vacía';
+      } else if (dirs.length) inside = ', con todo lo que ' + (dirs.length === 1 ? 'tiene' : 'tienen') + ' dentro';
+      if (wipe) {
+        // rm -rf ~: everything of yours; /home/ana stays, empty
+        var kept0 = wipe.r.denied[0] || HOME;
+        parts.push('Vas a borrar <b class="hldel">todo lo tuyo</b>: tus carpetas con lo que tienen, tus archivos y también los ocultos (tu configuración). ' +
+          (hereGoes ? '<b>' + esc(placeName(cwd)) + ', donde estás, también.</b> ' : '') + 'Solo queda ' + code(abs(kept0)) + ', vacía: ' +
+          code(abs(kept0.slice(0, -1))) + ' es de root.');
+      } else {
+        // with -rf the danger banner already says it is for ever: the words go to where the path leads
+        var rf = o.r && o.f;
+        parts.push('Vas a borrar ' + rmWhat(good.map(function (op) { return { segs: op.r.segs, isDir: op.r.isDir }; }), bdel) + inside + '.' +
+          (dirs.length && !rf ? ' Con ' + code('-r') + ', rm entra en la carpeta, borra lo de adentro y después la carpeta.' : '') +
+          (rf ? '' : ' No ' + (c.files + c.dirs === 1 ? 'va' : 'van') + ' a ninguna papelera: <b>' + (c.files + c.dirs === 1 ? 'desaparece' : 'desaparecen') + '</b>.'));
+        if (climb && climb.ok && /(^|\/)\.\.(\/|$)/.test(climb.t.text)) parts.push('La ruta empieza en ' + esc(placeName(cwd)) + ' y <b class="hldel">sube con ..</b>: ' +
+          esc(nameOf(climb.r.segs)) + (sameSegs(climb.r.segs, cwd) ? ' es la carpeta donde estás.' : ' está <b>fuera de donde estás</b>.'));
+        else if (only && !dirs.length && startOf(only.t.text) === 'here') parts.push(walkText(resolve(a.argv[only.i], cwd, tree), false));
+        else if (only && startOf(only.t.text) !== 'here') parts.push('La ruta empieza ' + (startOf(only.t.text) === 'root' ? 'en la raíz ' + code('/') : 'en ' + code('~')) + ', no donde estás.');
+      }
+      if (o.r && o.f) parts.push('Con ' + code('-rf') + ', rm no pregunta ni avisa.');
+      if (o.i) parts.push('Con ' + code('-i') + ', rm te pregunta antes de cada ' + (dirs.length ? 'cosa' : 'uno') + ': respondes ' + code('y') + ' (yes = sí) o ' + code('n') + ' (no).');
     }
+    if (quiets.length) parts.push(andList(quiets.map(function (op) { return '<b>' + esc(op.t.text) + '</b>'; })) + (quiets.length === 1 ? ' no existe' : ' no existen') +
+      ', y con ' + code('-f') + ' rm no avisa: no muestra nada, ni un error.');
     bad.forEach(function (op) {
       parts.push((m > 1 ? '<span class="n del">' + op.n + '</span> ' : '') + rmReason(op.r, op.cands) + (good.length ? ' rm se lo salta y borra lo demás.' : ''));
     });
-    if (!bad.length) parts.push('rm no muestra nada cuando sale bien.');
+    if (!bad.length && !quiets.length && !o.i && !wipe && !(o.r && o.f)) parts.push('rm no muestra nada cuando sale bien.');
     var said = parts.filter(Boolean).join(' ');
-    if (!bad.length) {
-      a.explain = { tone: 'del', html: said };
-      a.go = { kind: 'del', html: 'borra para siempre' };
+    var hush = quiets.length ? 'con ' + code('-f') + ', un error de tipeo pasa en silencio' : null;
+    // what rm protects, and what it doesn't
+    var but = bad.some(function (op) { return op.r.code === 'root'; }) ? RM_ROOT_BUT : bad.some(function (op) { return op.r.code === 'dot'; }) ? RM_DOT_BUT : null;
+    // the folder you are in goes too: after Enter you are in a folder that no longer exists
+    var you = hereGoes && !wipe ? '<b>' + esc(placeName(cwd)) + ', donde estás, también se borra.</b> Después estarás en una carpeta que ya no existe: sal con ' + code('cd ~') + '.' : null;
+    if (wipe && !bad.length) {
+      a.preview = { lines: run.lines.slice(), es: rmNotes(run) };
+      a.explain = { tone: 'del', html: said, hush: hush, plain: true };
+      a.go = { kind: 'del', html: 'borra <b>TODO</b> lo tuyo, para siempre' };
+    } else if (!bad.length && good.length) {
+      a.explain = { tone: 'del', html: said, hush: hush, you: you };
+      a.go = { kind: 'del', html: o.i ? 'rm te pregunta antes de borrar' : 'borra para siempre' };
+    } else if (!bad.length) {
+      // with -f, nothing that exists: Enter does nothing, silently
+      a.explain = { tone: 'note', html: '<b>No se borrará nada:</b> ' + said, hush: hush };
+      a.go = { kind: 'enter', html: 'no hace nada' };
     } else if (good.length) {
       a.preview = { lines: run.lines.slice(), es: rmNotes(run) };
-      a.explain = { tone: 'warn', html: said };
+      a.explain = { tone: 'warn', html: said, hush: hush, warn: but, you: you };
       a.go = { kind: 'del', html: 'borra para siempre y da un error' };
     } else {
       a.preview = { lines: run.lines.slice(), es: rmNotes(run) };
@@ -4145,14 +4656,66 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         a.explain = { tone: 'warn', html: said };
         a.go = { kind: 'tab', html: 'para completar ' + code(half.cands[0].name + (half.cands[0].isDir ? '/' : '')) };
       } else {
-        a.explain = { tone: 'bad', html: '<b>No se borrará nada:</b> ' + (m === 1 ? said.charAt(0).toLowerCase() + said.slice(1) : said), icon: 'x' };
+        a.explain = { tone: 'bad', html: '<b>No se borrará nada:</b> ' + (m === 1 && said.charAt(0) !== '<' ? said.charAt(0).toLowerCase() + said.slice(1) : said), icon: bad.some(function (op) { return op.r.code === 'root'; }) ? 'lock' : 'x', hush: hush, warn: but };
         a.go = { kind: 'error', html: 'dará error: ' + esc(bad.length === 1 ? RM_GO[bad[0].r.code] : 'no se puede') };
       }
     }
   }
 
+  /* ---------- rm -i: rm waits for an answer ----------
+   * After Enter on rm -i, rm asks on the line (bash's question) and what the learner types is an answer, not a
+   * command. ask: { q, kind: file|empty|descend|rmdir, segs, n, isDir, opts }, from runRm. */
+  var ASK_MEAN = { file: '¿lo borro?', empty: '¿lo borro?', descend: '¿entro?', rmdir: '¿la borro?' };
+  var ASK_GLOSS = { file: ['remove regular file', 'borrar el archivo'], empty: ['remove regular empty file', 'borrar el archivo vacío'],
+    descend: ['descend into directory', 'entrar en la carpeta'], rmdir: ['remove directory', 'borrar la carpeta'] };
+  var ASK_ANS = { file: { yes: 'se borra', no: 'se queda' }, empty: { yes: 'se borra', no: 'se queda' },
+    descend: { yes: 'entra y pregunta por cada cosa', no: 'la carpeta se queda entera' }, rmdir: { yes: 'se borra', no: 'se queda' } };
+  function askSpanish(ask) {
+    var nm = '<b>' + esc(nameOf(ask.segs)) + '</b>';
+    return { file: '¿Borro el archivo ' + nm + '?', empty: '¿Borro el archivo vacío ' + nm + '?',
+      descend: '¿Entro en la carpeta ' + nm + ' para borrar lo de adentro?', rmdir: '¿Borro la carpeta ' + nm + '?' }[ask.kind];
+  }
+  function analyzeAnswer(line, ask) {
+    var a = newAnalysis(line);
+    a.kind = 'rm-ask';
+    a.state = 'rm-ask';
+    a.cmd = 'rm';
+    a.ask = ask;
+    var text = line.trim(), typed = text.length > 0, yes = rmYes(line), ans = ASK_ANS[ask.kind];
+    a.answer = typed ? (yes ? 'yes' : 'no') : null;
+    if (typed) {
+      // the whole answer is one token: an answer, not a command
+      var start = line.indexOf(text);
+      var t = tok({ text: text, start: start, end: start + text.length }, 'ans', 0, yes ? 'respuesta: sí' : 'respuesta: no', yes ? 'del' : 'stay');
+      t.sup = yes ? 'y' : 'n';
+      a.tokens.push(t);
+    }
+    a.cards.push({ role: 'cmd', tone: 'cmd', label: 'comando', val: 'rm' + (ask.opts ? ' ' + ask.opts : ''), mean: 'borra, si dices que sí',
+      lines: [code('-i') + ' pregunta antes de cada borrado'] });
+    var g = ASK_GLOSS[ask.kind];
+    a.cards.push({ role: 'ask', badge: '?', tone: 'ask', label: 'rm pregunta', val: nameOf(ask.segs) + (ask.isDir ? '/' : ''), mean: ASK_MEAN[ask.kind],
+      lines: [code(g[0]) + ' = ' + esc(g[1])] });
+    if (!typed) a.cards.push({ role: 'empty', badge: '↵', label: 'tu respuesta', val: 'falta: y o n',
+      pathHtml: '<b class="hldel">y</b> (yes = sí) ' + esc(ans.yes) + ' · <b>n</b>, o cualquier otra cosa, ' + esc(ans.no) });
+    else a.cards.push({ role: 'ans', badge: yes ? 'y' : 'n', tone: yes ? 'del' : 'stay', label: 'tu respuesta', val: text, mean: (yes ? 'sí: ' + ans.yes : 'no: ' + ans.no),
+      note: yes ? 'empieza con y (yes = sí): es un sí' : /^[sS]/.test(text) ? 's no es sí para rm: es un no' : 'no empieza con y: es un no' });
+    a.count = { n: 1, slots: 1, pips: [typed ? (yes ? 'del' : 'stay') : 'ask'], status: 'ask', text: 'rm pregunta · responde y o n' };
+    // the tree: the thing rm asks about; as the answer is typed, what it will do
+    var willGo = typed && yes && ask.kind !== 'descend';
+    a.marks[abs(ask.segs)] = [willGo ? { type: 'del', n: ask.n, top: true, label: 'sí: se borra' }
+      : typed && !yes ? { type: 'stay', label: 'no: ' + ans.no } : { type: 'ask', label: typed ? 'sí: entra' : 'rm pregunta: ' + ASK_MEAN[ask.kind] }];
+    a.explain = { tone: 'ask', html: 'Con ' + code('-i') + ', rm pregunta antes de cada borrado y espera. <b>Lo que escribes ahora es una respuesta, no un comando.</b> ' +
+      (ask.kind === 'descend' ? 'Si empieza con <b>y</b> (de <i>yes</i> = sí), rm entra en la carpeta y te pregunta por cada cosa; cualquier otra cosa la deja entera, también <b>s</b>.'
+        : 'Si empieza con <b>y</b> (de <i>yes</i> = sí), lo borra; cualquier otra cosa lo deja, también <b>s</b>.') };
+    a.go = !typed ? { kind: 'ask', html: 'Escribe <kbd>y</kbd> o <kbd>n</kbd> y presiona <kbd>Enter ↵</kbd>' }
+      : yes ? { kind: willGo ? 'del' : 'enter', html: 'responde sí: ' + esc(ans.yes) + (willGo ? ' para siempre' : '') }
+      : { kind: 'enter', html: 'responde no: ' + esc(ans.no) };
+    a.askVis = { q: ask.q.trim(), es: askSpanish(ask), yes: ans.yes, no: ans.no, answer: a.answer, kind: ask.kind };
+    return a;
+  }
+
   /* ---------- the commands ----------
-   * All seven are built: pwd, cd, ls, mkdir, mv, cp and rm (rm's -r, -f and -i come in step R2). */
+   * All seven are built: pwd, cd, ls, mkdir, mv, cp and rm (with -r, -f, -i and its safety cases, step R3). */
   register({ name: 'pwd', summary: 'muestra dónde estás', roles: oneRole('arg', 'argumento', 'arg'), ownOptions: true,
     analyze: pwdAnalyze, run: runPwd, notes: pwdNotes, result: pwdResult });
   register({ name: 'cd', summary: 'cambia de carpeta', roles: oneRole('dest', 'destino', 'a2'),
@@ -4171,8 +4734,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   root.TrainerSim = root.MvSim = {
     HOME: abs(HOME), START_CWD: abs(START_CWD), HISTORY_MAX: HISTORY_MAX, COMMANDS: COMMANDS,
     initialState: initialState, initialTree: initialTree, resolve: resolve, tokenize: tokenize,
-    analyze: analyze, rows: rows, apply: apply, complete: complete, promptFor: promptFor,
-    tildePath: tildePath, runMv: runMv, abs: abs, esc: esc, startOf: startOf, KIND_TEXT: KIND_TEXT, START_CAP: START_CAP
+    analyze: analyze, analyzeAnswer: analyzeAnswer, rows: rows, apply: apply, complete: complete, promptFor: promptFor,
+    tildePath: tildePath, runMv: runMv, abs: abs, esc: esc, startOf: startOf, KIND_TEXT: KIND_TEXT, START_CAP: START_CAP, cwdLost: cwdLost
   };
 })(typeof window !== 'undefined' ? window : this);
 </script>
@@ -4207,6 +4770,9 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   var log = [];            // what the terminal shows above the prompt: commands with output, Tab listings
   var lastResult = null;   // "Qué pasó" after Enter, until the learner types again
   var current = null;      // the latest analysis
+  /* rm -i: while rm waits for an answer. line: the command; before: the state before it ran; answers: so far;
+   * ask: the question on the line. Each answer replays the command from before with all the answers (TrainerSim.apply). */
+  var pending = null;
 
   var esc = S.esc;
   function code(s) { return '<code>' + esc(s) + '</code>'; }
@@ -4286,7 +4852,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     var tone = c.role === 'empty' ? 'empty' : c.tone;
     var badgeCls = c.role === 'empty' ? 'ghost' : c.role === 'cmd' ? (c.tone === 'bad' ? 'bad c' : 'c')
       : c.tone === 'cand' ? 'a1' : c.tone;
-    var badge = c.badge || (c.role === 'cmd' ? 'C' : c.role === 'opt' ? '!' : String(c.n || 'C'));
+    var badge = esc(c.badge || (c.role === 'cmd' ? 'C' : c.role === 'opt' ? '!' : String(c.n || 'C')));
     var val = c.role === 'empty' ? '<span class="val none">' + esc(c.val) + '</span>' : '<code class="val">' + esc(c.val) + '</code>';
     var absText = c.abs || c.path;   // the one-line form (four or more cards): the absolute path, or a short word
     var abs = absText ? '<span class="abs' + (c.abs && c.abs !== c.path ? ' word' : '') + '">' + esc(absText) + '</span>' : '';
@@ -4333,9 +4899,16 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     var notdir = get(ms, 'notdir'), list = get(ms, 'list'), listed = get(ms, 'listed');
     var made = get(ms, 'created'), have = get(ms, 'have');
     var stays = get(ms, 'stays'), copyin = get(ms, 'copyin'), copied = get(ms, 'copied'), orig = get(ms, 'original');
-    var del = get(ms, 'del'), gone = get(ms, 'gone');
-    if (gone) cls.push('gone');
-    else if (del) cls.push('del');
+    var del = get(ms, 'del'), gone = get(ms, 'gone'), ask = get(ms, 'ask'), stay = get(ms, 'stay');
+    var refuse = get(ms, 'refuse'), keep = get(ms, 'keep'), lost = get(ms, 'lost');
+    if (lost) cls.push('lost');
+    else if (refuse) cls.push('refuse');
+    else if (keep) cls.push('keep');
+    else if (gone) cls.push('gone');
+    else if (del) cls.push.apply(cls, del.sub ? ['del', 'sub'] : ['del']);
+    else if (ask) cls.push('ask');
+    else if (stay) cls.push('stay');
+    else if (miss && miss.quiet) cls.push('quiet');
     else if (perm) cls.push('perm');
     else if (notdir) cls.push('err-file');
     else if (miss) cls.push('err-ghost');
@@ -4358,6 +4931,11 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     else if (orig) cls.push('orig');
     if (r.hidden) cls.push('hid');
     if (has(ms, 'cwd')) tags += PIN_TAG;
+    // where you are, deleted: the pin stays, and says that folder no longer exists
+    if (lost) tags += PIN_TAG + '<span class="tag lost" data-testid="lost-tag">ya no existe</span>';
+    // what rm refuses, and what stays because its folder is root's
+    if (refuse || keep) tags += '<span class="tag safe" data-testid="safe-tag"><svg><use href="#i-shield"/></svg><span class="n ' + (refuse ? 'bad' : 'del') + '">' +
+      (refuse || keep).n + '</span>' + esc((refuse || keep).label) + '</span>';
     // cd: where the pin will be after Enter, and where it just arrived
     if (has(ms, 'pinTo')) tags += '<span class="tag here-pin ghost" data-testid="pin-to"><svg><use href="#i-pin"/></svg>aquí vas a estar</span>';
     if (has(ms, 'arrived')) tags += '<span class="tag done"><svg><use href="#i-check"/></svg>llegaste</span>';
@@ -4369,7 +4947,10 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     if (made) tags += '<span class="tag done" data-testid="created-tag"><svg><use href="#i-check"/></svg>creada</span>';
     if (copied) tags += '<span class="tag done" data-testid="copied-tag"><svg><use href="#i-check"/></svg>copiada</span>';
     if (orig) tags += '<span class="tag orig" data-testid="original-tag">el original</span>';
-    if (del) tags += '<span class="tag del" data-testid="del-tag"><span class="n del">' + del.n + '</span>se borra</span>';
+    if (del && del.sub) tags += del.label === '' ? '' : '<span class="tag del sub" data-testid="del-tag">' + esc(del.label || 'dentro') + '</span>';
+    else if (del) tags += '<span class="tag del" data-testid="del-tag"><span class="n del">' + del.n + '</span>' + esc(del.label || (del.ask ? 'se borra si dices y' : 'se borra')) + '</span>';
+    if (ask) tags += '<span class="tag ask" data-testid="ask-tag"><span class="n ask">?</span>' + esc(ask.label) + '</span>';
+    if (stay) tags += '<span class="tag stay" data-testid="ask-tag">' + esc(stay.label) + '</span>';
     if (gone) tags += '<span class="tag gone" data-testid="gone-tag">' + (gone.count === 1 ? 'borrado' : 'borrados') + '</span>';
     if (copyin) tags += '<span class="tag copy sub">copia</span>';
     if (have) tags += '<span class="tag have" data-testid="have-tag"><svg><use href="#i-check"/></svg>ya existe</span>';
@@ -4380,7 +4961,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     else if (src) tags += nTag('a1', src.n, 'origen');
     else if (stays) tags += nTag('a1', stays.n, 'se queda');
     if (done) tags += '<span class="tag done"><svg><use href="#i-check"/></svg>renombrado</span>';
-    if (miss) tags += nTag('err', miss.n, miss.label);
+    if (miss && miss.quiet) tags += '<span class="tag quiet" data-testid="quiet-tag"><span class="n quiet">' + miss.n + '</span>' + esc(miss.label) + '</span>';
+    else if (miss) tags += nTag('err', miss.n, miss.label);
     if (nw && nw.copy) tags += '<span class="tag copy" data-testid="copy-tag"><span class="n a2">' + nw.n + '</span>' + esc(nw.label) + '</span>';
     else if (nw) tags += nTag(nw.tone === 'warn' || nw.tone === 'odd' ? nw.tone : 'a2', nw.n, nw.label);
     else if (dst && !perm) tags += nTag('a2', dst.n, 'destino');
@@ -4443,13 +5025,15 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       else if (cpDone.originals.indexOf(r.path) >= 0) r.marks = r.marks.concat([{ type: 'original' }]);
     });
     el.tree.innerHTML = rows.map(rowHtml).join('');
+    el.wrap.classList.toggle('wipe', !!a.wipe);
     // fit the rows to the panel height
     var base = parseFloat(getComputedStyle(el.html).getPropertyValue('--row-base')) || 40;
     var avail = el.treeArea.clientHeight;
     var row = Math.max(24, Math.min(base, Math.floor(avail / (rows.length + 0.4))));
     el.wrap.style.setProperty('--row', row + 'px');
 
-    el.treeSub.textContent = a.hasPreview ? 'antes y después de Enter' : state.history.length ? 'ahora, después de tus comandos' : 'ahora';
+    el.treeSub.textContent = a.kind === 'rm-ask' ? 'ahora: rm espera tu respuesta' : a.hasPreview ? 'antes y después de Enter'
+      : a.kind === 'rm' && rows.some(function (r) { return has(r.marks, 'refuse'); }) ? 'Enter no cambia nada' : state.history.length ? 'ahora, después de tus comandos' : 'ahora';
     var leg = [];
     function any(type) { return rows.some(function (r) { return has(r.marks, type); }); }
     if (a.state === 'missing') {
@@ -4481,14 +5065,24 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       el.legend.innerHTML = '<span><i class="sw gone"></i>borrado: ya no está</span>';
       return;
     }
+    if (a.kind === 'rm-ask') {
+      leg.push(any('del') ? '<span><i class="sw del"></i>se borra, para siempre</span>' : any('stay') ? '<span><i class="sw stay"></i>se queda</span>'
+        : '<span><i class="sw ask"></i>rm pregunta por este</span>');
+      el.legend.innerHTML = leg.join('');
+      return;
+    }
     if (a.kind === 'rm') {
       if (any('del')) leg.push('<span><i class="sw del"></i>se borra, para siempre</span>');
+      if (rows.some(function (r) { return has(r.marks, 'missing') && get(r.marks, 'missing').quiet; })) leg.push('<span><i class="sw quiet"></i>no existe: -f no avisa</span>');
       var rmNd = rows.filter(function (r) { return has(r.marks, 'notdir'); })[0];
       if (rmNd) leg.push('<span><i class="sw err"></i>' + (get(rmNd.marks, 'notdir').label === 'carpeta: falta -r' ? 'carpeta: falta <code class="err">-r</code>' : esc(get(rmNd.marks, 'notdir').label || 'es un archivo')) + '</span>');
-      if (any('missing')) leg.push('<span><i class="sw err"></i>no existe</span>');
+      if (rows.some(function (r) { return has(r.marks, 'missing') && !get(r.marks, 'missing').quiet; })) leg.push('<span><i class="sw err"></i>no existe</span>');
       if (any('perm')) leg.push('<span><i class="sw err"></i>sin permiso: es de root</span>');
       if (any('candidate')) leg.push('<span><i class="sw cand"></i>¿quisiste decir…?</span>');
-      if (a.route && a.route.nodes.length > 1) leg.push('<span><i class="sw route"></i>ruta de ' + code(a.route.typed) + '</span>');
+      if (any('refuse')) leg.push('<span><i class="sw safe"></i>rm se niega</span>');
+      if (any('keep')) leg.push('<span><i class="sw safe"></i>queda</span>');
+      if (a.route && a.route.nodes.length > 1) leg.push('<span><i class="sw route' + (a.route.climb ? ' del' : '') + '"></i>ruta de <code' + (a.route.climb ? ' class="del"' : '') + '>' + esc(a.route.typed) + '</code></span>');
+      if (a.showRoot && rows.some(function (r) { return r.root; })) leg.push('<span><svg class="lk" width="12" height="12"><use href="#i-lock"/></svg>de root</span>');
       el.legend.innerHTML = leg.slice(0, 3).join('');
       return;
     }
@@ -4640,6 +5234,9 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     // pwd's route (from / to where you are) is drawn in ink, like the "estás aquí" pin
     var here = !!(route && route.here);
     el.hops.classList.toggle('here', here);
+    var climb = !!(route && route.climb);
+    el.hops.classList.toggle('del', climb);
+    if (a.wipe) wipeBox();
     if (!route) return;
     el.hops.appendChild(marker('ah-hop'));
     var wb = el.wrap.getBoundingClientRect(), nodes = route.nodes, hops = [];
@@ -4661,19 +5258,23 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     var spacing = Math.min(1.9 * row, (gutter - 1.0 * row) / Math.max(1, hops.length - 1));
     order.forEach(function (hp, rank) { hp.lane = gutter - 0.75 * row - rank * spacing; });
     hops.forEach(function (hp) { if (hp.node.kind === 'stay') hp.lane = Math.min(hp.lane, gutter - 1.1 * row); });
-    var taken = [];
+    var taken = [], lastUp = -1;
+    hops.forEach(function (hp, k) { if (hp.node.kind === 'up') lastUp = k; });
+    if (climb) hereBox(taken);
     hops.forEach(function (hp, k) {
-      var tone = muted ? '' : hp.node.missing || !hp.node.ok ? 'warn' : '';
+      var tone = muted || climb ? '' : hp.node.missing || !hp.node.ok ? 'warn' : '';
       var x1 = hp.a.ico - 6, x2 = hp.b.ico - 4;
       var p = svg('path', { 'class': 'hop-line' + (tone ? ' warn' : ''), d: bracket(x1, hp.y1, hp.lane, hp.y2, x2), 'marker-end': 'url(#ah-hop' + (tone ? '-warn' : '') + ')' });
       el.hops.appendChild(p);
       // an absolute or ~ route starts with a filled dot on its own start
       el.hops.appendChild(svg('circle', { 'class': 'hop-dot' + (k === 0 && route.start && route.start !== 'here' ? ' start' : ''), cx: x1, cy: hp.y1, r: k === 0 && route.start && route.start !== 'here' ? 4.5 : 4 }));
       var lab = document.createElement('span');
-      lab.className = 'hop' + (tone ? ' ' + tone : '') + (muted ? ' muted' : '') + (here ? ' here' : '');
+      // the climb: the last ".." that leaves where you are says so
+      var leaves = climb && hp.node.kind === 'up' && k === lastUp;
+      lab.className = 'hop' + (climb ? ' del' : tone ? ' ' + tone : '') + (leaves ? ' climb' : '') + (muted ? ' muted' : '') + (here ? ' here' : '');
       lab.setAttribute('data-testid', 'hop');
       lab.setAttribute('data-n', hp.node.n);
-      lab.innerHTML = '<b>' + hp.node.n + '</b>' + code(hp.node.seg) + (here ? '' : ' ' + esc(hp.node.verb));
+      lab.innerHTML = '<b>' + hp.node.n + '</b>' + code(hp.node.seg) + (here ? '' : ' ' + esc(hp.node.verb)) + (leaves ? '<em data-testid="hop-out">fuera de donde estás</em>' : '');
       el.hopLabels.appendChild(lab);
       var w = lab.offsetWidth, hgt = lab.offsetHeight;
       var left = hp.node.kind === 'stay' ? hp.lane - w - 6 : Math.max(-14, Math.min(hp.lane - w / 2, gutter - w - 4 + 0.5 * row));
@@ -4681,9 +5282,44 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     });
   }
 
+  /* The climb's frame: where you are (your folder and what is in it), boxed in ink, "donde estás"; the red route leaves it. */
+  function hereBox(taken) {
+    var here = S.abs(state.cwd), rs = [].slice.call(el.tree.querySelectorAll('[data-testid="tree-row"]')).filter(function (r) {
+      var p = r.getAttribute('data-path');
+      return (p === here || p.indexOf(here + '/') === 0) && !r.classList.contains('lost');
+    });
+    if (!rs.length) return;
+    var wb = el.wrap.getBoundingClientRect(), g0 = geom(rs[0], wb), g1 = geom(rs[rs.length - 1], wb);
+    var box = document.createElement('span');
+    box.className = 'here-box';
+    box.setAttribute('data-testid', 'here-box');
+    box.style.left = (g0.ico - 0.3 * g0.h) + 'px';
+    box.style.top = (g0.top - 3) + 'px';
+    box.style.width = (Math.max.apply(null, rs.map(function (r) { return geom(r, wb).right; })) - g0.ico + 0.3 * g0.h + 6) + 'px';
+    box.style.height = (g1.top + g1.h - g0.top + 6) + 'px';
+    box.innerHTML = '<span>donde estás</span>';
+    el.hopLabels.appendChild(box);
+  }
+
+  /* rm -rf ~: one red outline around everything that goes, "todo lo de dentro se borra" */
+  function wipeBox() {
+    var rs = [].slice.call(el.tree.querySelectorAll('[data-testid="tree-row"].del'));
+    if (!rs.length) return;
+    var wb = el.wrap.getBoundingClientRect(), g0 = geom(rs[0], wb), g1 = geom(rs[rs.length - 1], wb);
+    var box = document.createElement('span');
+    box.className = 'gone-box';
+    box.setAttribute('data-testid', 'wipe-box');
+    box.style.left = (g0.left - 6) + 'px';
+    box.style.top = (g0.top - 3) + 'px';
+    box.style.width = (Math.max.apply(null, rs.map(function (r) { return geom(r, wb).right; })) - g0.left + 12) + 'px';
+    box.style.height = (g1.top + g1.h - g0.top + 6) + 'px';
+    box.innerHTML = '<span>todo lo de dentro se borra</span>';
+    el.hopLabels.appendChild(box);
+  }
+
   /* the move bracket, right of the tree: from the row that leaves to the new row */
   function drawMove(a) {
-    if (a.kind === 'mkdir' || a.kind === 'rm') { el.move.innerHTML = ''; el.move.classList.remove('odd', 'you'); return; }   // mkdir moves nothing: its route is on the left
+    if (a.kind === 'mkdir' || a.kind === 'rm' || a.kind === 'rm-ask') { el.move.innerHTML = ''; el.move.classList.remove('odd', 'you'); return; }   // mkdir moves nothing: its route is on the left
     el.move.innerHTML = '';
     el.move.classList.toggle('odd', a.state === 'rename');
     el.move.classList.toggle('you', !!a.pinMove);
@@ -4780,7 +5416,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     // the banner over the route: "Esto RENOMBRA, no mueve"
     el.banner.hidden = !a.banner;
     el.banner.className = 'banner' + (a.banner && a.banner.cls ? ' ' + a.banner.cls : '');
-    el.banner.innerHTML = a.banner ? '<svg width="22" height="22"><use href="#i-warn"/></svg><span>' + a.banner.html + '</span>' : '';
+    el.banner.innerHTML = !a.banner ? '' : a.banner.raw || '<svg width="22" height="22"><use href="#i-warn"/></svg><span>' + a.banner.html + '</span>';
+    el.routeBlock.classList.toggle('stepaside', !!a.hideRoute);
     // a broken route: what you typed, broken at the failing hop; then the route that works
     var br = a.broken || null;   // mv's or cd's broken route; cd's "es un archivo" too
     el.fixTyped.hidden = !br;
@@ -4827,6 +5464,11 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
       el.routeTitle.textContent = 'Lo que borraste';
       el.ribbon.className = 'ribbon rv';
       el.ribbon.innerHTML = rmVisHtml(lastResult.rmVis);
+    } else if (a.kind === 'rm-ask') {
+      // rm -i: the question, in bash's words and in Spanish, and what each answer does
+      el.routeTitle.textContent = 'rm te pregunta';
+      el.ribbon.className = 'ribbon rv';
+      el.ribbon.innerHTML = askVisHtml(a.askVis);
     } else if (a.kind === 'rm' && a.rmVis) {
       el.routeTitle.textContent = 'Qué se borra';
       el.ribbon.className = 'ribbon rv';
@@ -4883,7 +5525,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     el.ribbon.classList.toggle('with-n', !!(a.srcRoute && !br && ribbonRoute));
     el.eqs.classList.toggle('with-src', !!(a.srcRoute && !br));
     el.eqs.innerHTML = a.eqs.map(function (e) {
-      var tcls = e.role === 'src' ? 't1' : e.tone === 'warn' ? 'tw' : e.tone === 'bad' ? 'tb' : e.tone === 'del' ? 'td' : e.tone === 'ink' ? 'ink' : 't2';
+      var tcls = e.role === 'src' ? 't1' : e.tone === 'warn' ? 'tw' : e.tone === 'bad' ? 'tb' : e.tone === 'del' ? 'td' : e.tone === 'quiet' ? 'tq' : e.tone === 'ink' ? 'ink' : 't2';
       var chip = e.chip ? '<span class="chip ' + (e.chipTone || 'odd') + '">' +
         (e.lock ? '<svg class="lk"><use href="#i-lock"/></svg>' : '') + esc(e.chip) + '</span>' : '';
       // a multi-step source lists its steps under it: ".. → ana", "fotos → fotos"
@@ -4891,7 +5533,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         return '<span class="chip" data-testid="route-step"><b>' + (i + 1) + '</b>' + code(c.seg) + (c.reach !== c.seg ? ' → ' + esc(c.reach) : '') + '</span>';
       }).join('');
       return '<div class="eq" data-testid="route-eq" data-role="' + e.role + '" data-n="' + (e.n || '') + '"><div class="main">' +
-        (e.role === 'del' ? '<span class="n ' + (e.tone === 'del' ? 'del' : 'err') + '">' + e.n + '</span>' : '') +
+        (e.role === 'del' ? '<span class="n ' + (e.tone === 'del' || e.tone === 'quiet' ? e.tone : 'err') + '">' + e.n + '</span>' : '') +
         (e.pre ? '<span class="eq-k">' + esc(e.pre) + '</span>' : '') + '<code class="' + tcls + '">' +
         esc(e.typed) + '</code><span class="is">=</span>' +
         (e.shown ? '<code class="abs">' + esc(e.shown) + '</code>' : '<span class="none">no existe</span>') + chip +
@@ -4938,20 +5580,30 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
 
   /* rm: the folder drawn whole; what goes is struck through (before Enter), or a dashed ghost (after it) */
   function rmVisHtml(v) {
-    return '<div class="renvis rmvis' + (v.done ? ' done' : '') + '" data-testid="rm-visual"><div class="rv-folder">' +
-      '<span class="rv-label"><svg class="ico folder"><use href="#i-folder"/></svg><code>' + esc(v.place) + '</code></span><div class="rv-row">' +
+    return '<div class="renvis rmvis' + (v.done ? ' done' : '') + (v.sub ? ' rmsub' : '') + '" data-testid="rm-visual"><div class="rv-folder">' +
+      '<span class="rv-label">' + (v.sub && !v.done ? '<span class="n del">' + v.n + '</span>' : '') + '<svg class="ico ' + (v.sub && v.done ? 'xmark' : 'folder') + '"><use href="#i-' + (v.sub && v.done ? 'x' : 'folder') + '"/></svg><code>' + esc(v.place) + '</code></span><div class="rv-row">' +
       v.items.map(function (it) {
         var ico = it.isDir ? 'folder' : 'file';
         if (!it.gone) return '<span class="rv-chip keep" data-testid="rm-keep"><svg class="ico ' + ico + '"><use href="#i-' + ico + '"/></svg>' + code(it.name) + '</span>';
         if (v.done) return '<span class="rv-chip gone" data-testid="rm-gone"><svg class="ico xmark"><use href="#i-x"/></svg>' + code(it.name) + '</span>';
-        return '<span class="rv-chip del" data-testid="rm-del"><span class="n del">' + it.n + '</span><svg class="ico ' + ico + '"><use href="#i-' + ico + '"/></svg>' + code(it.name) + '</span>';
-      }).join('') + '</div><span class="rv-cap">' + rmCap(v) + '</span></div></div>';
+        return '<span class="rv-chip del" data-testid="rm-del">' + (it.n ? '<span class="n del">' + it.n + '</span>' : '') + '<svg class="ico ' + ico + '"><use href="#i-' + ico + '"/></svg>' + code(it.name) + '</span>';
+      }).join('') + '</div><span class="rv-cap" data-testid="rm-cap">' + rmCap(v) + '</span></div></div>';
   }
   function rmCap(v) {
+    if (v.sub) return v.done ? 'la carpeta y lo de adentro ya no existen' : !v.items.length ? 'la carpeta está vacía: se va sola' : 'la carpeta se va <b>con todo lo de adentro</b>';
     if (v.done) return 'no están en ninguna papelera: ya no existen';
     var left = v.items.filter(function (it) { return !it.gone; });
     return !left.length ? 'después de Enter la carpeta queda vacía'
       : 'después de Enter solo ' + (left.length === 1 ? 'queda ' : 'quedan ') + left.map(function (it) { return '<b>' + esc(it.name) + '</b>'; }).join(', ');
+  }
+
+  /* rm -i: the question, its Spanish, and the two answers (the one being typed lights up) */
+  function askVisHtml(v) {
+    return '<div class="askvis" data-testid="ask-visual"><div class="ask-q"><code data-testid="ask-q">' + esc(v.q) + '</code><span data-testid="ask-es">' + v.es + '</span></div>' +
+      '<div class="ask-a"><span class="ans yes' + (v.answer === 'yes' ? ' on' : '') + '"><kbd>y</kbd><span><b>yes = sí</b>: ' + esc(v.yes) + '</span></span>' +
+      '<span class="ans no' + (v.answer === 'no' ? ' on' : '') + '"><kbd>n</kbd><span><b>no</b>: ' + esc(v.no) + '</span></span></div>' +
+      '<span class="ysnote" data-testid="ask-s-note"><svg width="16" height="16"><use href="#i-warn"/></svg><span>rm habla inglés: <b>s</b> no es sí. Con <kbd>s</kbd>, ' +
+      (v.kind === 'descend' ? 'la carpeta <b>se queda</b> entera' : (v.kind === 'rmdir' ? 'la carpeta' : 'el archivo') + ' <b>se queda</b>') + '.</span></span></div>';
   }
 
   /* "Original y copia": [notas.txt] ==copia==> [notas.txt], each under its folder */
@@ -5127,7 +5779,9 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     el.explain.innerHTML = (icon && !ex.plain
       ? '<p class="box ' + ex.tone + '"><svg width="18" height="18"><use href="' + icon + '"/></svg><span>' + ex.html + '</span></p>'
       : '<p>' + ex.html + '</p>') + (ex.tip ? '<p class="tip" data-testid="tip">' + ex.tip + '</p>' : '') +
-      (ex.you ? '<p class="younote" data-testid="you-note"><svg><use href="#i-pin"/></svg><span>' + ex.you + '</span></p>' : '');
+      (ex.you ? '<p class="younote" data-testid="you-note"><svg><use href="#i-pin"/></svg><span>' + ex.you + '</span></p>' : '') +
+      (ex.hush ? '<p class="quietnote" data-testid="quiet-note"><svg width="16" height="16"><use href="#i-warn"/></svg><span>' + ex.hush + '</span></p>' : '') +
+      (ex.warn ? '<p class="warnnote" data-testid="warn-note"><svg width="18" height="18"><use href="#i-warn"/></svg><span>' + ex.warn + '</span></p>' : '');
     var pv = title === 'Qué va a pasar' ? a.preview : null;
     el.preview.hidden = !pv;
     el.preview.innerHTML = pv ? '<span class="pv-label">Si presionas Enter:</span><div class="pv-box' + (pv.ok ? ' ok' : '') + (pv.long ? ' long' : '') + '">' +
@@ -5155,7 +5809,8 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
         '<div><span class="prompt">' + esc(it.prompt) + '</span> <span class="cmdtxt" data-testid="history-cmd">' + esc(it.command) + '</span></div>';
       if (it.kind === 'tab') html += '<div class="opts" data-testid="history-opts">' + esc(it.options.join('  ')) + '</div>';
       (it.output || []).forEach(function (l, i) {
-        html += '<div class="out' + (it.error || i < (it.errCount || 0) ? ' err' : '') + '" data-testid="history-out">' + esc(l) + '</div>';
+        var err = it.errLines ? it.errLines.indexOf(i) >= 0 : it.error || i < (it.errCount || 0);
+        html += '<div class="out' + (err ? ' err' : '') + '" data-testid="history-out">' + esc(l) + '</div>';
       });
       (it.notes || []).forEach(function (l) { html += '<div class="es" data-testid="history-es">' + esc(l) + '</div>'; });
       html += '</div>';
@@ -5222,14 +5877,20 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
 
   /* ---------- update everything ---------- */
   function update() {
-    var a = S.analyze(el.input.value, state);
+    var a = pending ? S.analyzeAnswer(el.input.value, pending.ask) : S.analyze(el.input.value, state);
     current = a;
     el.html.dataset.kind = a.kind;
     el.html.dataset.state = a.state || (renamedNow(a) ? 'renamed' : arrivedNow(a) ? 'arrived' : listedNow(a) ? 'listed' : createdNow(a) ? 'created' : copiedNow(a) ? 'copied' : deletedNow(a) ? 'deleted' : '');   // before drawing: the state changes the tree's layout
     fitTerminal(a);
-    var p = S.promptFor(state.cwd);
+    // while rm -i waits, the line starts with its question instead of the prompt
+    var p = pending ? pending.ask.q : S.promptFor(state.cwd);
     if (el.prompt.textContent !== p) el.prompt.textContent = p;
+    el.prompt.classList.toggle('askq', !!pending);
+    el.prompt.dataset.testid = pending ? 'ask-prompt' : 'prompt';
     el.whereCwd.textContent = S.tildePath(state.cwd);
+    var lostCwd = S.cwdLost(state);
+    el.where.classList.toggle('lost', lostCwd);
+    el.where.dataset.lost = lostCwd ? 'yes' : 'no';
     el.where.classList.toggle('moved', !!arrivedNow(a));
     el.resetNote.hidden = !deletedNow(a);   // just after a cd, "Estás en" stands out
     fitLine();
@@ -5247,7 +5908,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     drawMove(a);
     syncScroll();
   }
-  window.MvUI = { analysis: function () { return current; }, state: function () { return state; } };
+  window.MvUI = { analysis: function () { return current; }, state: function () { return state; }, pending: function () { return pending; } };
 
   function setLine(value, caret) {
     el.input.value = value;
@@ -5257,20 +5918,39 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   }
 
   function runLine() {
-    var line = el.input.value;
-    var res = S.apply(line, state);
+    var line = el.input.value, res;
+    if (pending) {
+      // an answer to rm -i: replay the command from where it started, with every answer so far
+      pending.answers.push(line);
+      res = S.apply(pending.line, pending.before, pending.answers);
+    } else res = S.apply(line, state);
     recall = { pos: null, draft: '' };
     if (res.blocked) { el.explain.classList.remove('flash'); void el.explain.offsetWidth; el.explain.classList.add('flash'); return; }
+    if (res.asking) {
+      // rm asks: the terminal shows the command and the questions answered so far; the line holds the next question
+      if (!pending) pending = { line: line, before: state, answers: [], prompt: S.promptFor(state.cwd) };
+      var shown = { kind: 'cmd', prompt: pending.prompt, command: pending.line.trim(), output: res.lines, errLines: res.errLines, asking: true };
+      if (pending.answers.length) { log[log.length - 1] = shown; renderHistory(); } else pushLog(shown);
+      pending.ask = res.asking;
+      state = res.partial;   // the tree shows what is already gone
+      lastResult = null;
+      el.input.value = '';
+      update();
+      return;
+    }
     if (!res.ran) { pushLog({ kind: 'empty', prompt: S.promptFor(state.cwd), command: '' }); return; }
     state = res.state;
-    pushLog({ kind: 'cmd', prompt: res.entry.prompt, command: res.entry.command, output: res.entry.output, error: res.entry.error,
-      errCount: res.entry.errCount, notes: res.entry.notes });
+    var item = { kind: 'cmd', prompt: res.entry.prompt, command: res.entry.command, output: res.entry.output, error: res.entry.error,
+      errCount: res.entry.errCount, errLines: res.entry.errLines, notes: res.entry.notes };
+    if (pending) { log[log.length - 1] = item; renderHistory(); pending = null; }   // the last answer: the entry is complete
+    else pushLog(item);
     lastResult = res.result;
     el.input.value = '';
     update();
   }
 
   function tab() {
+    if (pending) return;   // an answer has nothing to complete
     var line = el.input.value, caret = el.input.selectionStart;
     var res = S.complete(line, caret, state);
     if (res.line !== line) { setLine(res.line, res.caret); return; }
@@ -5285,6 +5965,7 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
   }
 
   function reset() {
+    pending = null;
     state = S.initialState();   // the tree, the folder, OLDPWD and the history
     recall = { pos: null, draft: '' };
     log = [];
@@ -5301,13 +5982,13 @@ html[data-state="copied"] .tree-wrap { width: calc(var(--row) * 14.2); padding-l
     if (e.key === 'Enter') { e.preventDefault(); runLine(); }
     else if (e.key === 'Tab') { e.preventDefault(); tab(); }
     else if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && !e.shiftKey && !e.altKey && !e.ctrlKey && !e.metaKey) {
-      e.preventDefault(); recallKey(e.key === 'ArrowUp');
+      e.preventDefault(); if (!pending) recallKey(e.key === 'ArrowUp');
     }
     requestAnimationFrame(syncScroll);
   });
   el.hlist.addEventListener('click', function (e) {
     var li = e.target.closest('[data-testid="historial-item"]');
-    if (!li) return;
+    if (!li || pending) return;
     var cmd = state.history[+li.dataset.i].command;
     recall = { pos: +li.dataset.i, draft: '' };   // ↑ and ↓ go on from here, as after recalling it with ↑
     el.input.focus();
